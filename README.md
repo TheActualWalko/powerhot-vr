@@ -5,8 +5,8 @@ Team Powerhot does Hack Week!
 
 ## Getting Started
 1. Fork this repo
-2. Run 'npm i'
-3. Run 'npm start'
+2. Run `npm i`
+3. Run `npm start`
 
 ## Resources
 I strongly recommend ()
