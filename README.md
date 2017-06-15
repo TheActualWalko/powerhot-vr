@@ -1,5 +1,6 @@
 # Powerhot VR
 _(working title)_
+
 Team Powerhot does Hack Week!
 
 ## Getting Started
