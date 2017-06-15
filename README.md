@@ -9,8 +9,7 @@ Team Powerhot does Hack Week!
 3. Run `npm start`
 
 ## Resources
-I strongly recommend ()
-[reading the first few pages of the documentation](https://aframe.io/docs/0.5.0/introduction/) to get familiar with the ECS concept and some best practices for a-frame development.
+I strongly recommend [reading the first few pages of the documentation](https://aframe.io/docs/0.5.0/introduction/) to get familiar with the ECS concept and some best practices for a-frame development.
 
 ## Notes
 We're using [aframe-boilerplate](https://github.com/aframevr/aframe-boilerplate/) as a starting point here, with only minor dev environment modifications.
