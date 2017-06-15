@@ -1,31 +1,23 @@
 {
-  "name": "powerhot_vr",
-  "version": "0.0.1",
-  "private": true,
+  "name": "Powerhot-VR",
+  "description": "Team Powerhot does Hack Week",
+  "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
-    "start": "node -e \"console.log('open browser at http://localhost:8081/vr/\\n\\n');\" && node node_modules/react-native/local-cli/cli.js start",
-    "bundle": "node node_modules/react-vr/scripts/bundle.js",
-    "open": "node -e \"require('xopen')('http://localhost:8081/vr/')\"",
-    "devtools": "react-devtools",
-    "test": "jest"
-  },
-  "dependencies": {
-    "ovrui": "^1.1.0",
-    "react": "~15.4.1",
-    "react-native": "~0.42.0",
-    "three": "^0.80.1",
-    "react-vr": "^1.1.0",
-    "react-vr-web": "^1.1.0"
+    "start": "budo --live --verbose --port 3000 --open",
+    "deploy": "ghpages",
+    "ghpages": "ghpages"
   },
   "devDependencies": {
-    "babel-jest": "^19.0.0",
-    "babel-preset-react-native": "^1.9.1",
-    "jest": "^19.0.2",
-    "react-devtools": "^2.1.3",
-    "react-test-renderer": "~15.4.1",
-    "xopen": "1.0.0"
+    "budo": "^7.0.0",
+    "ghpages": "0.0.3"
   },
-  "jest": {
-    "preset": "react-vr"
-  }
+  "keywords": [
+    "aframe",
+    "aframe-example",
+    "aframe-boilerplate",
+    "aframe-scene",
+    "webvr",
+    "vr"
+  ]
 }
