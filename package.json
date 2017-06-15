@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "budo --live --verbose --port 3000 --open",
-    "deploy": "ghpages",
-    "ghpages": "ghpages"
+    "start": "budo --live --verbose --port 3001 --open --cors --host localhost"
+  },
+  "dependencies": {
+    "aframe": "0.5.0"
   },
   "devDependencies": {
-    "budo": "^7.0.0",
-    "ghpages": "0.0.3"
+    "budo": "^7.0.0"
   },
   "keywords": [
     "aframe",
