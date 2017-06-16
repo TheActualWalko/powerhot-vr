@@ -5,6 +5,7 @@
     <title>Powerhot VR</title>
     <meta name="description" content="Hello, World! - A-Frame">
     <script src="./node_modules/aframe/dist/aframe-master.js"></script>
+    <script src="./lerp.js"></script>
     <script src="./when-looked-at.js"></script>
   </head>
   <body>
@@ -23,6 +24,10 @@
           attr: scale; 
           val: 0.8 0.8 0.8;
         "
+        lerp="
+          duration: 250;
+          properties: scale;
+        "
       ></a-box>
 
       <a-box 
@@ -35,6 +40,10 @@
           attr: scale; 
           val: 0.8 0.8 0.8;
         "
+        lerp="
+          duration: 250;
+          properties: scale;
+        "
       ></a-box>
 
       <a-box 
@@ -46,6 +55,10 @@
           focus: 0.75; 
           attr: scale; 
           val: 0.8 0.8 0.8;
+        "
+        lerp="
+          duration: 250;
+          properties: scale;
         "
       ></a-box>
       <a-videosphere src="#video" rotation="0 270 0"></a-videosphere>
