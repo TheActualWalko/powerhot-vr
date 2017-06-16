@@ -10,13 +10,17 @@ AFRAME.registerComponent('when-looked-at', {
       default: 0.5, 
       type: 'number' 
     },
-    attr:  { 
-      default: 'visible', 
-      type: 'string' 
+    dur: {
+      type: 'number'
     },
-    val:   { 
-      default: 'true', 
-      type: 'string' 
+    property: {
+      type: 'string'
+    },
+    in: { 
+      type: 'number' 
+    },
+    out: { 
+      type: 'number' 
     }
   },
 
@@ -25,7 +29,15 @@ AFRAME.registerComponent('when-looked-at', {
   init: function() {
     const camera = document.querySelector('#camera');
     const frustum = new THREE.Frustum();
-    this.offCamVal = this.el.getAttribute(this.data.attr);
+    this.el.setAttribute(
+      'animation__when-looked-at',
+      `
+        startEvents: __look-changed;
+        property: ${this.data.property}; 
+        dur: ${this.data.dur}; 
+        to: 0;
+      `
+    );
     this.camera = camera;
     this.frustum = frustum;
     this.wasInView = null;
@@ -70,10 +82,12 @@ AFRAME.registerComponent('when-looked-at', {
     ));
 
     if (isInView && this.wasInView !== true) {
-      this.el.setAttribute(this.data.attr, this.data.val);
+      this.el.setAttribute('animation__when-looked-at', 'to', this.data.in);
+      this.el.emit('__look-changed');
       this.wasInView = true;
     } else if (!isInView && this.wasInView !== false){
-      this.el.setAttribute(this.data.attr, this.offCamVal);
+      this.el.setAttribute('animation__when-looked-at', 'to', this.data.out);
+      this.el.emit('__look-changed');
       this.wasInView = false;
     }
   },
