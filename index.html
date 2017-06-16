@@ -9,6 +9,9 @@
   </head>
   <body>
     <a-scene>
+      <a-assets>
+        <video id="video" src="video.mp4" autoplay loop muted></video>
+      </a-assets>
       <a-camera id="camera"></a-camera>
       <a-box 
         position="0 0 -3" 
@@ -45,6 +48,7 @@
           val: 0.8 0.8 0.8;
         "
       ></a-box>
+      <a-videosphere src="#video" rotation="0 270 0"></a-videosphere>
     </a-scene>
   </body>
 </html>
