@@ -8,17 +8,30 @@
     <script src="./node_modules/aframe-lerp-component/dist/aframe-lerp-component.js"></script>
     <script src="./node_modules/aframe-look-at-component/dist/aframe-look-at-component.js"></script>
     <script src="./node_modules/aframe-animation-component/dist/aframe-animation-component.js"></script>
+    <script src="./node_modules/aframe-html-shader/dist/aframe-html-shader.js"></script>
     <script src="./group-opacity.js"></script>
     <script src="./when-looked-at.js"></script>
     <script src="./plays.js"></script>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div style="width:100%; height:100%; position:fixed; left: 0; top: 0; z-index: -1; overflow: hidden;">
+      <div id="all-html">
+        <div id="social" class="social" style="width:400px; height:600px;">
+          <h2>Social</h2>
+          <img src="./test.png" />
+        </div>
+        <div id="artist" class="artist" style="width:400px; height:600px;">
+          <h2>Artist</h2>
+          <img src="./test.png" />
+        </div>
+      </div>
+    </div>
     <a-scene>
       <a-assets>
         <video id="video" src="slayer.mp4" muted></video>
       </a-assets>
   
-
       <!--
       <a-entity
         position="-3 1.6 -2"
@@ -60,21 +73,23 @@
           dur: 100;
           in: 1; 
           out: 0;
+          usesDomNode: #social;
         ">
         <a-plane 
           position="0 0 0"
           scale="2 3 1"
-          base-opacity="0.75"
-          material="color: white;">
+          position="0 0 0"
+          base-opacity="1"
+          use-material="true"
+          material="
+            shader: html; 
+            fps: 15;
+            target: #all-html; 
+            width: 400;
+            height: 600;
+            transparent: true;
+            ">
         </a-plane>
-        <a-text 
-          position="-0.9 1.4 0.01"
-          value="SOCIAL"
-          font-size="8"
-          letter-spacing="15"
-          scale="0.4 0.4 0.4"
-          wrap-pixels="1100">
-        </a-text>
       </a-entity>
 
       <!-- Left -->
@@ -88,21 +103,23 @@
           dur: 100;
           in: 1; 
           out: 0;
+          usesDomNode: #artist;
         ">
         <a-plane 
           position="0 0 0"
           scale="2 3 1"
-          base-opacity="0.75"
-          material="color: white;">
+          position="0 0 0"
+          base-opacity="1"
+          use-material="true"
+          material="
+            shader: html; 
+            fps: 15;
+            target: #all-html; 
+            width: 400;
+            height: 600;
+            transparent: true;
+            ">
         </a-plane>
-        <a-text 
-          position="-0.9 1.4 0.01"
-          value="ALL ACCESS"
-          font-size="8"
-          letter-spacing="15"
-          scale="0.4 0.4 0.4"
-          wrap-pixels="1100">
-        </a-text>
       </a-entity>
 
       <!-- Down -->

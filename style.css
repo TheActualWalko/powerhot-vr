@@ -1,0 +1,19 @@
+*{
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.social, .artist {
+  color:white; 
+  background-color: rgba(0,0,0,0.5);
+  padding: 20px;
+}
+
+.social h2, .artist h2 {
+  font-size: 30px;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.hidden {
+  display: none;
+}
