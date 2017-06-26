@@ -16,7 +16,11 @@ AFRAME.registerComponent('group-opacity', {
     });
     children
       .forEach((child, index) => {
-        child.setAttribute('opacity', opacity * baseOpacities[index]);
+        if (child.getAttribute('use-material')) {
+          child.setAttribute('material', 'opacity', opacity * baseOpacities[index]);
+        } else {
+          child.setAttribute('opacity', opacity * baseOpacities[index]);
+        }
       });
   }
 });
