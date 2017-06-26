@@ -21,6 +21,9 @@ AFRAME.registerComponent('when-looked-at', {
     },
     out: { 
       type: 'number' 
+    },
+    usesDomNode: {
+      type: 'string'
     }
   },
 
@@ -84,10 +87,17 @@ AFRAME.registerComponent('when-looked-at', {
     if (isInView && this.wasInView !== true) {
       this.el.setAttribute('animation__when-looked-at', 'to', this.data.in);
       this.el.emit('__look-changed');
+      if (this.data.usesDomNode) {
+        document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
+        document.querySelector(this.data.usesDomNode).classList.remove('hidden');
+      }
       this.wasInView = true;
     } else if (!isInView && this.wasInView !== false){
       this.el.setAttribute('animation__when-looked-at', 'to', this.data.out);
       this.el.emit('__look-changed');
+      if (this.data.usesDomNode) {
+        document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
+      }
       this.wasInView = false;
     }
   },
