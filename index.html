@@ -15,69 +15,161 @@
   <body>
     <a-scene>
       <a-assets>
-        <video id="video" src="demo-video.m4v" muted></video>
+        <video id="video" src="slayer.mp4" muted></video>
       </a-assets>
+  
+
+      <!--
       <a-entity
-        position="-4 1.6 -3"
+        position="-3 1.6 -2"
         look-at="#camera"
         group-opacity="0.5"
         when-looked-at="
-          focus: 0.25; 
+          focus: 0.3; 
           property: group-opacity;
           dur: 100;
           in: 1; 
           out: 0;
         ">
         <a-plane 
-          position="0 1.8 0"
+          position="0 0 0"
           scale="2 0.7 1"
           base-opacity="0.75"
           material="color: white;"
           plays="#video">
         </a-plane>
         <a-text 
-          position="-0.9 2 0.1"
+          position="-0.9 0.2 0.1"
           value="PLAY/PAUSE"
           font-size="8"
           letter-spacing="15"
           scale="0.4 0.4 0.4"
           wrap-pixels="1100">
         </a-text>
+      </a-entity>
+      -->
 
-
+      <!-- Right -->
+      <a-entity
+        position="4 2.9 -3"
+        rotation="0 -30 0"
+        group-opacity="0.5"
+        when-looked-at="
+          focus: 0.3; 
+          property: group-opacity;
+          dur: 100;
+          in: 1; 
+          out: 0;
+        ">
         <a-plane 
-          position="0 1 0"
-          scale="2 0.7 1"
+          position="0 0 0"
+          scale="2 3 1"
           base-opacity="0.75"
-          material="color: white;"
-          plays="#video">
+          material="color: white;">
         </a-plane>
         <a-text 
-          position="-0.9 1.2 0.1"
-          value="SHAKE THAT BOOTY"
-          font-size="8"
-          letter-spacing="15"
-          scale="0.4 0.4 0.4"
-          wrap-pixels="1100">
-        </a-text>
-
-
-        <a-plane 
-          position="0 0.2 0"
-          scale="2 0.7 1"
-          base-opacity="0.75"
-          material="color: white;"
-          plays="#video">
-        </a-plane>
-        <a-text 
-          position="-0.9 0.4 0.1"
-          value="WORK IT"
+          position="-0.9 1.4 0.01"
+          value="SOCIAL"
           font-size="8"
           letter-spacing="15"
           scale="0.4 0.4 0.4"
           wrap-pixels="1100">
         </a-text>
       </a-entity>
+
+      <!-- Left -->
+      <a-entity
+        position="-4 2.9 -3"
+        rotation="0 30 0"
+        group-opacity="0.5"
+        when-looked-at="
+          focus: 0.3; 
+          property: group-opacity;
+          dur: 100;
+          in: 1; 
+          out: 0;
+        ">
+        <a-plane 
+          position="0 0 0"
+          scale="2 3 1"
+          base-opacity="0.75"
+          material="color: white;">
+        </a-plane>
+        <a-text 
+          position="-0.9 1.4 0.01"
+          value="ALL ACCESS"
+          font-size="8"
+          letter-spacing="15"
+          scale="0.4 0.4 0.4"
+          wrap-pixels="1100">
+        </a-text>
+      </a-entity>
+
+      <!-- Down -->
+      <a-entity
+        position="0 0.2 -2"
+        look-at="#camera"
+        group-opacity="0.5"
+        when-looked-at="
+          focus: 0.3; 
+          property: group-opacity;
+          dur: 100;
+          in: 1; 
+          out: 0;
+        ">
+
+        <!-- playbill -->
+        <a-plane 
+          position="-0.55 0 0"
+          scale="2.9 1 1"
+          base-opacity="0.75"
+          material="color: white;">
+        </a-plane>
+        <a-text 
+          position="-1.95 0.4 0.01"
+          value="UP NEXT"
+          font-size="8"
+          letter-spacing="15"
+          scale="0.4 0.4 0.4"
+          wrap-pixels="1100">
+        </a-text>
+
+
+        <!-- settings -->
+        <a-plane 
+          position="1.5 0.275 0"
+          scale="1 0.45 1"
+          base-opacity="0.75"
+          material="color: white;">
+        </a-plane>
+        <a-text 
+          position="1.05 0.4 0.01"
+          value="SETTINGS"
+          font-size="8"
+          letter-spacing="15"
+          scale="0.4 0.4 0.4"
+          wrap-pixels="1100">
+        </a-text>
+
+
+        <!-- move -->
+        <a-plane 
+          position="1.5 -0.275 0"
+          scale="1 0.45 1"
+          base-opacity="0.75"
+          material="color: white;">
+        </a-plane>
+        <a-text 
+          position="1.05 -0.125 0.01"
+          value="MOVE"
+          font-size="8"
+          letter-spacing="15"
+          scale="0.4 0.4 0.4"
+          wrap-pixels="1100">
+        </a-text>
+      </a-entity>
+
+
       <a-camera id="camera">
         <a-entity 
           cursor="fuse: true; fuseTimeout: 750"
@@ -117,10 +209,12 @@
           </a-animation>
         </a-entity>
       </a-camera>
+
+
       <a-videosphere 
         id="videosphere" 
         src="#video" 
-        rotation="0 270 0"
+        rotation="0 265 0"
         segments-height="16"
         segments-width="16">
       </a-videosphere>
