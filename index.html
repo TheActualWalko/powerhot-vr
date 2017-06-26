@@ -18,8 +18,53 @@
     <div style="width:100%; height:100%; position:fixed; left: 0; top: 0; z-index: -1; overflow: hidden;">
       <div id="all-html">
         <div id="social" class="social" style="width:400px; height:600px;">
-          <h2>Social</h2>
-          <img src="./test.png" />
+          <ul>
+            <li class="post">
+              <div class="profile" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('test.png');"></div>
+              <main>
+                <h3>Sam Watkinson</h3>
+                <p>lol wtf omg bbq</p>
+              </main>
+              <img src="test.png" class="image" />
+            </li>
+
+            <li class="post">
+              <div class="profile" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('test.png');"></div>
+              <main>
+                <h3>Sam Watkinson</h3>
+                <p>lol wtf omg bbq</p>
+              </main>
+            </li>
+
+            <li class="post">
+              <div class="profile" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('test.png');"></div>
+              <main>
+                <h3>Sam Watkinson</h3>
+                <p>lol wtf omg bbq</p>
+              </main>
+            </li>
+
+            <li class="post">
+              <div class="profile" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('test.png');"></div>
+              <main>
+                <h3>Sam Watkinson</h3>
+                <p>lol wtf omg bbq</p>
+              </main>
+            </li>
+
+            <li class="post">
+              <div class="profile" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('test.png');"></div>
+              <main>
+                <h3>Sam Watkinson</h3>
+                <p>lol wtf omg bbq</p>
+              </main>
+            </li>
+          </ul>
         </div>
         <div id="artist" class="artist" style="width:400px; height:600px;">
           <h2>Artist</h2>
@@ -31,41 +76,12 @@
       <a-assets>
         <video id="video" src="slayer.mp4" muted></video>
       </a-assets>
-  
-      <!--
-      <a-entity
-        position="-3 1.6 -2"
-        look-at="#camera"
-        group-opacity="0.5"
-        when-looked-at="
-          focus: 0.3; 
-          property: group-opacity;
-          dur: 100;
-          in: 1; 
-          out: 0;
-        ">
-        <a-plane 
-          position="0 0 0"
-          scale="2 0.7 1"
-          base-opacity="0.75"
-          material="color: white;"
-          plays="#video">
-        </a-plane>
-        <a-text 
-          position="-0.9 0.2 0.1"
-          value="PLAY/PAUSE"
-          font-size="8"
-          letter-spacing="15"
-          scale="0.4 0.4 0.4"
-          wrap-pixels="1100">
-        </a-text>
-      </a-entity>
-      -->
+
 
       <!-- Right -->
       <a-entity
         position="4 2.9 -3"
-        rotation="0 -30 0"
+        rotation="0 -45 0"
         group-opacity="0.5"
         when-looked-at="
           focus: 0.3; 
@@ -77,14 +93,14 @@
         ">
         <a-plane 
           position="0 0 0"
-          scale="2 3 1"
+          scale="3 4.5 1.5"
           position="0 0 0"
           base-opacity="1"
           use-material="true"
           material="
             transparent: true;
             shader: html; 
-            fps: 5;
+            fps: 15;
             target: #all-html; 
             width: 400;
             height: 600;
@@ -95,7 +111,7 @@
       <!-- Left -->
       <a-entity
         position="-4 2.9 -3"
-        rotation="0 30 0"
+        rotation="0 45 0"
         group-opacity="0.5"
         when-looked-at="
           focus: 0.3; 
@@ -107,14 +123,14 @@
         ">
         <a-plane 
           position="0 0 0"
-          scale="2 3 1"
+          scale="3 4.5 1.5"
           position="0 0 0"
           base-opacity="1"
           use-material="true"
           material="
             transparent: true;
             shader: html; 
-            fps: 5;
+            fps: 15;
             target: #all-html; 
             width: 400;
             height: 600;
