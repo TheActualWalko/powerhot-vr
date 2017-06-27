@@ -5,13 +5,16 @@
   "license": "MIT",
   "scripts": {
     "start": "budo --live --verbose --port 3001 --open --cors",
-    "start-ssl": "budo --live --verbose --port 3001 --open --cors --ssl --cert=server.cer --key=server.key"
+    "start-ssl": "budo --cors --live --verbose --port 3001 --open --ssl --cert=server.cer --key=server.key"
   },
   "dependencies": {
     "aframe": "0.5.0",
     "aframe-animation-component": "^3.2.5",
     "aframe-lerp-component": "^1.0.3",
-    "aframe-look-at-component": "^0.5.1"
+    "aframe-look-at-component": "^0.5.1",
+    "axios": "^0.16.2",
+    "lodash.curry": "^4.1.1",
+    "qs": "^6.4.0"
   },
   "devDependencies": {
     "budo": "^8.4.0"

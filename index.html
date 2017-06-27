@@ -8,10 +8,33 @@
     <script src="./node_modules/aframe-lerp-component/dist/aframe-lerp-component.js"></script>
     <script src="./node_modules/aframe-look-at-component/dist/aframe-look-at-component.js"></script>
     <script src="./node_modules/aframe-animation-component/dist/aframe-animation-component.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./node_modules/qs/dist/qs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
     <script src="./group-opacity.js"></script>
     <script src="./when-looked-at.js"></script>
     <script src="./plays.js"></script>
+    <script src="./facebookHelpers.js"></script>
     <script src="./shootTheScreen.js"></script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : "214588375268980",//214588375268980, //214588375268980
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v2.9'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
   </head>
   <body>
     <a-scene id="armsRace">
