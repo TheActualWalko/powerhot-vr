@@ -17,6 +17,7 @@
     <script src="./speech.js"></script>
     <script src="./camera-click.js"></script>
     <script src="./plays.js"></script>
+    <script src="./closes-photo.js"></script>
     <script src="./facebookHelpers.js"></script>
     <script src="./shootTheScreen.js"></script>
     <script>
@@ -45,24 +46,6 @@
       <div id="all-html">
         <div id="social" class="social" style="width:400px; height:600px;">
           <ul>
-            <li class="post">
-              <div class="profile" style="background-image:url('test.png');"></div>
-              <div class="icon" style="background-image:url('icons/fb.png');"></div>
-              <main>
-                <h3>Sam Watkinson</h3>
-                <p>lol wtf omg bbq</p>
-              </main>
-              <img src="test.png" class="image" />
-            </li>
-
-            <li class="post">
-              <div class="profile" style="background-image:url('test.png');"></div>
-              <div class="icon" style="background-image:url('icons/insta.png');"></div>
-              <main>
-                <h3>Sam Watkinson</h3>
-                <p>lol wtf omg bbq</p>
-              </main>
-            </li>
 
             <li class="post">
               <div class="profile" style="background-image:url('test.png');"></div>
@@ -106,29 +89,26 @@
 
       <!-- Right -->
       <a-entity
-        position="4 2.9 -3"
-        rotation="0 -45 0"
-        group-opacity="0.5"
+        position="4.5 2.9 -4"
+        rotation="0 -30 0"
+        group-opacity="0"
         when-looked-at="
-          focusX: 0.3;
-          focusY: 0.8;
           property: group-opacity;
-          dur: 100;
           in: 1;
           out: 0;
+          focusX: 0.3; 
+          focusY: 0.8; 
           usesDomNode: #social;
         ">
-        <a-plane
+        <a-plane 
+          class="uses-html"
           position="0 0.5 0"
           scale="3 4.5 1.5"
           position="0 0 0"
-          base-opacity="1"
-          use-material="true"
           material="
-            transparent: true;
-            shader: html;
-            fps: 15;
-            target: #all-html;
+            shader: html; 
+            fps: 0;
+            target: #all-html; 
             width: 400;
             height: 600;
           ">
@@ -138,7 +118,6 @@
           class="clickable"
           position="0 -2.2 0"
           scale="3 0.65 1"
-          base-opacity="0.6"
           material="
             color: white;
           ">
@@ -153,29 +132,26 @@
 
       <!-- Left -->
       <a-entity
-        position="-4 2.9 -3"
-        rotation="0 45 0"
-        group-opacity="0.5"
+        position="-4.5 2.9 -4"
+        rotation="0 30 0"
+        group-opacity="0"
         when-looked-at="
-          focusX: 0.3;
-          focusY: 0.8;
           property: group-opacity;
-          dur: 100;
           in: 1;
           out: 0;
+          focusX: 0.3; 
+          focusY: 0.8; 
           usesDomNode: #artist;
         ">
-        <a-plane
-          position="0 0 0"
+        <a-plane 
+          class="uses-html"
+          position="0 0.5 0"
           scale="3 4.5 1.5"
           position="0 0 0"
-          base-opacity="1"
-          use-material="true"
           material="
-            transparent: true;
-            shader: html;
-            fps: 15;
-            target: #all-html;
+            shader: html; 
+            fps: 0;
+            target: #all-html; 
             width: 400;
             height: 600;
             ">
@@ -186,28 +162,26 @@
       <a-entity
         position="0 0.2 -2"
         look-at="#camera"
-        group-opacity="0.5"
+        group-opacity="0"
         when-looked-at="
-          focusX: 2;
-          focusY: 0.4;
           property: group-opacity;
-          dur: 100;
           in: 1;
           out: 0;
+          focusX: 2; 
+          focusY: 0.4; 
         ">
 
         <!-- playbill -->
         <a-plane
           position="-0.55 0 0"
           scale="2.4 1 1"
-          base-opacity="0.6"
           material="color: white;">
         </a-plane>
         <a-text
           position="-1.7 0.4 0.01"
           value="UP NEXT"
+          color="#464646"
           font-size="8"
-          letter-spacing="15"
           scale="0.4 0.4 0.4"
           wrap-pixels="1100">
         </a-text>
@@ -217,15 +191,14 @@
         <a-plane
           position="1.25 0.275 0"
           scale="1 0.45 1"
-          base-opacity="0.6"
           material="color: white;"
           class="clickable">
         </a-plane>
         <a-text
           position="0.85 0.4 0.01"
           value="SETTINGS"
+          color="#464646"
           font-size="8"
-          letter-spacing="15"
           scale="0.4 0.4 0.4"
           wrap-pixels="1100">
         </a-text>
@@ -235,26 +208,28 @@
         <a-plane
           position="1.25 -0.275 0"
           scale="1 0.45 1"
-          base-opacity="0.6"
           material="color: white;"
           class="clickable">
         </a-plane>
         <a-text
           position="0.85 -0.125 0.01"
           value="MOVE"
+          color="#464646"
           font-size="8"
-          letter-spacing="15"
           scale="0.4 0.4 0.4"
           wrap-pixels="1100">
         </a-text>
       </a-entity>
 
-      <!-- Front & Center -->
+      <!-- Image UI -->
       <a-entity
         position="0 1.6 -3"
-        rotation="0 0 0">
-        <a-plane
-          id="image-preview"
+        rotation="0 0 0"
+        id="take-photo"
+        group-opacity="0"
+        >
+        <a-plane 
+          id="photo-preview"
           opacity="0"
           position="0 0.5 0"
           scale="4 2 1.5">
@@ -263,9 +238,28 @@
           position="0 2 0"
           rotation="15 0 0"
           value="Say 'SNAP' to take a photo or 'CANCEL' to stop."
+          color="#fff"
           align="center"
           scale="0.5 0.5 0.5"
           font-size="24"
+          >
+        </a-text>
+
+
+        <a-plane 
+          position="0 -0.9 0"
+          scale="1.5 0.45 1.5"
+          material="color: white;"
+          class="clickable"
+          closes-photo>
+        </a-plane>
+        <a-text 
+          position="0 -0.9 0.01"
+          value="CANCEL"
+          color="#464646"
+          align="center"
+          font-size="8"
+          scale="0.5 0.5 0.5"
           >
         </a-text>
       </a-entity>
@@ -322,5 +316,8 @@
         segments-width="16">
       </a-videosphere>
     </a-scene>
+    <script>
+      document.getElementById('video').pause();
+    </script>
   </body>
 </html>
