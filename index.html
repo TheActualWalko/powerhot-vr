@@ -8,8 +8,6 @@
     <script src="./node_modules/aframe-lerp-component/dist/aframe-lerp-component.js"></script>
     <script src="./node_modules/aframe-look-at-component/dist/aframe-look-at-component.js"></script>
     <script src="./node_modules/aframe-animation-component/dist/aframe-animation-component.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
-    <script src="./node_modules/qs/dist/qs.js"></script>
     <script src="./node_modules/aframe-html-shader/dist/aframe-html-shader.js"></script>
     <script src="./axios.js"></script>
     <script src="./jquery.js"></script>
@@ -17,31 +15,9 @@
     <script src="./group-opacity.js"></script>
     <script src="./when-looked-at.js"></script>
     <script src="./speech.js"></script>
-    <script src="./shootTheScreen.js"></script>
-    <script src="./plays.js"></script>
     <script src="./camera-click.js"></script>
-    <script src="./closes-photo.js"></script>
-    <script src="./moves-to.js"></script>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId            : "214588375268980",//214588375268980, //214588375268980
-          autoLogAppEvents : true,
-          xfbml            : true,
-          version          : 'v2.9'
-        });
-        FB.AppEvents.logPageView();
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <script src="main.js"></script>
+    <script src="./plays.js"></script>
+    <script src="./shootTheScreen.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -72,18 +48,18 @@
           property: group-opacity;
           in: 1;
           out: 0;
-          focusX: 0.3; 
-          focusY: 0.8; 
+          focusX: 0.3;
+          focusY: 0.8;
           usesDomNode: #social;
         ">
-        <a-plane 
+        <a-plane
           class="uses-html"
           position="0 0.5 0"
           scale="3 4.5 1.5"
           position="0 0 0"
           material="
-            shader: html; 
-            target: #all-html; 
+            shader: html;
+            target: #all-html;
             width: 400;
             height: 600;
           ">
@@ -114,18 +90,18 @@
           property: group-opacity;
           in: 1;
           out: 0;
-          focusX: 0.3; 
-          focusY: 0.8; 
+          focusX: 0.3;
+          focusY: 0.8;
           usesDomNode: #artist;
         ">
-        <a-plane 
+        <a-plane
           class="uses-html"
           position="0 0.5 0"
           scale="3 4.5 1.5"
           position="0 0 0"
           material="
-            shader: html; 
-            target: #all-html; 
+            shader: html;
+            target: #all-html;
             width: 400;
             height: 600;
             ">
@@ -141,8 +117,8 @@
           property: group-opacity;
           in: 1;
           out: 0;
-          focusX: 2; 
-          focusY: 0.4; 
+          focusX: 2;
+          focusY: 0.4;
         ">
 
         <!-- playbill -->
@@ -203,7 +179,7 @@
         id="take-photo"
         group-opacity="0"
         >
-        <a-image 
+        <a-image
           id="photo-preview"
           opacity="0"
           position="0 0.5 0"
@@ -221,14 +197,14 @@
         </a-text>
 
 
-        <a-plane 
+        <a-plane
           position="0 -0.9 0"
           scale="1.5 0.45 1.5"
           material="color: black;"
           class="clickable"
           closes-photo>
         </a-plane>
-        <a-text 
+        <a-text
           position="0 -0.9 0.01"
           value="CANCEL"
           color="#fff"
