@@ -1,11 +1,5 @@
 const request = require('request');
-
-const credentials = {
-  TWITTER: {
-    key: 'QOacjPJFXN0kM1UfalbCyOOej',
-    secret: 'KitYPaVnQfBfzDLNa4NnfpuKtg20jQec5wNPNsZH5hGfeVZixi'
-  }
-};
+const credentials = require('./credentials');
 
 class Auth {
   authTwitter() {
