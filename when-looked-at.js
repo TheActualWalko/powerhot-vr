@@ -92,6 +92,11 @@ AFRAME.registerComponent('when-looked-at', {
         setTimeout(()=>{
           document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
           document.querySelector(this.data.usesDomNode).classList.remove('hidden');
+          $(this.el)
+            .find('.uses-html')
+            .each(function(){
+              this.setAttribute('material', 'fps', 5);
+            });
         }, 0);
       }
       this.el.setAttribute(this.data.property, this.data.in);
@@ -100,6 +105,11 @@ AFRAME.registerComponent('when-looked-at', {
     } else if (!isInView && this.wasInView !== false){
       if (this.data.usesDomNode) {
         document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
+        $(this.el)
+          .find('.uses-html')
+          .each(function(){
+            this.setAttribute('material', 'fps', 0);
+          });
       }
       this.el.setAttribute(this.data.property, this.data.out);
       this.el.emit('__look-changed');

@@ -41,16 +41,17 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
+    <script src="main.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div style="width:100%; height:100%; position:fixed; left: 0; top: 0; z-index: -1; overflow: hidden;">
       <div id="all-html">
-        <div id="social" class="social" style="width:400px; height:600px;">
+        <div id="social" class="social hidden" style="width:400px; height:600px;">
           <ul id="posts">
           </ul>
         </div>
-        <div id="artist" class="artist" style="width:400px; height:600px;">
+        <div id="artist" class="artist hidden" style="width:400px; height:600px;">
           <h2>Artist</h2>
           <img src="./test.png" />
         </div>
@@ -82,7 +83,6 @@
           position="0 0 0"
           material="
             shader: html; 
-            fps: 12;
             target: #all-html; 
             width: 400;
             height: 600;
@@ -125,7 +125,6 @@
           position="0 0 0"
           material="
             shader: html; 
-            fps: 12;
             target: #all-html; 
             width: 400;
             height: 600;
@@ -292,6 +291,5 @@
         segments-width="16">
       </a-videosphere>
     </a-scene>
-    <script src="main.js"></script>
   </body>
 </html>
