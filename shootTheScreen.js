@@ -35,11 +35,13 @@ function getJpegAndRender () {
   return screenToJpegBlob('armsRace', false).then(renderJpegToImage);
 }
 
-function getJpegAndSend (message) {
-  return screenToJpegBlob('armsRace', false)
+function getJpegAndSend (message, is360=true) {
+  return screenToJpegBlob('armsRace', is360)
     .then((blob) => {
-      return ensureLogin()
-      .then(shareImage(message, blob))
+      // const dataUrl = window.URL.createObjectURL(blob);
+      return ensureLogin(['publish_actions'])
+      .then(response => console.log('post login Credentials', response) || response)
+      .then(shareImage(message, blob, is360))
       .then((response) => {console.log({response})})
       .catch((err) => {console.log({err})})
     })
