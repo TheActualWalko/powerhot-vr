@@ -4,6 +4,8 @@ if (typeof AFRAME === 'undefined') {
   throw new Error('Component attempted to register before AFRAME was available.');
 }
 
+let lookedAtHTMLtimeout;
+
 AFRAME.registerComponent('when-looked-at', {
   schema: {
     focusY: { 
@@ -36,15 +38,7 @@ AFRAME.registerComponent('when-looked-at', {
   init: function() {
     const camera = document.querySelector('#camera');
     const frustum = new THREE.Frustum();
-    this.el.setAttribute(
-      'animation__when-looked-at',
-      `
-        startEvents: __look-changed;
-        property: ${this.data.property}; 
-        dur: ${this.data.dur}; 
-        to: 0;
-      `
-    );
+    this.el.setAttribute(this.data.property, this.data.out);
     this.camera = camera;
     this.frustum = frustum;
     this.wasInView = null;
@@ -83,25 +77,36 @@ AFRAME.registerComponent('when-looked-at', {
     );
 
     const pos = this.el.getAttribute('position');
-    const isInView = this.frustum.containsPoint(new THREE.Vector3(
+    let isInView = this.frustum.containsPoint(new THREE.Vector3(
       pos.x,
       pos.y,
       pos.z
     ));
 
+    if (window.activeSpeech && window.activeSpeech.state === 'listening') {
+      isInView = false;
+    }
+
     if (isInView && this.wasInView !== true) {
       if (this.data.usesDomNode) {
-        document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
-        document.querySelector(this.data.usesDomNode).classList.remove('hidden');
+        setTimeout(()=>{
+          document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
+          document.querySelector(this.data.usesDomNode).classList.remove('hidden');
+        }, 0);
       }
-      this.el.setAttribute('animation__when-looked-at', 'to', this.data.in);
+      this.el.setAttribute(this.data.property, this.data.in);
       this.el.emit('__look-changed');
+      const htmlChildren = [...this.el.children].filter(x => x.className.split(' ').includes('uses-html'))
+      htmlChildren.forEach(x=>x.setAttribute('material', 'fps', 60));
+      setTimeout(()=>{
+        htmlChildren.forEach(x=>x.setAttribute('material', 'fps', 0));
+      }, 100);
       this.wasInView = true;
     } else if (!isInView && this.wasInView !== false){
       if (this.data.usesDomNode) {
         document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
       }
-      this.el.setAttribute('animation__when-looked-at', 'to', this.data.out);
+      this.el.setAttribute(this.data.property, this.data.out);
       this.el.emit('__look-changed');
       this.wasInView = false;
     }

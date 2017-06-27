@@ -41,4 +41,9 @@ class Speech {
     this.state = state.LISTENING;
     console.log('LISTENING');
   }
+
+  stop() {
+    this.state = state.IDLE;
+    this.recognition.stop();
+  }
 }
