@@ -6,7 +6,11 @@ if (typeof AFRAME === 'undefined') {
 
 AFRAME.registerComponent('when-looked-at', {
   schema: {
-    focus: { 
+    focusY: { 
+      default: 0.5, 
+      type: 'number' 
+    },
+    focusX: { 
       default: 0.5, 
       type: 'number' 
     },
@@ -57,14 +61,15 @@ AFRAME.registerComponent('when-looked-at', {
     cameraThreeJS.updateMatrix();
     cameraThreeJS.updateMatrixWorld();
     cameraThreeJS.matrixWorldInverse.getInverse(cameraThreeJS.matrixWorld);
-    const f = this.data.focus;
+    const fX = 1/this.data.focusX;
+    const fY = 1/this.data.focusY;
 
     const smallerProjectionMatrix = new THREE.Matrix4().multiplyMatrices(
       cameraThreeJS.projectionMatrix,
       new THREE.Matrix4().set(
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, f, 0,
+        fX,0, 0, 0,
+        0, fY,0, 0,
+        0, 0, 1, 0,
         0, 0, 0, 1,
       )
     );

@@ -11,6 +11,7 @@
     <script src="./node_modules/aframe-html-shader/dist/aframe-html-shader.js"></script>
     <script src="./group-opacity.js"></script>
     <script src="./when-looked-at.js"></script>
+    <script src="./camera-click.js"></script>
     <script src="./plays.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -83,7 +84,8 @@
         rotation="0 -45 0"
         group-opacity="0.5"
         when-looked-at="
-          focus: 0.3; 
+          focusX: 0.3; 
+          focusY: 0.8; 
           property: group-opacity;
           dur: 100;
           in: 1; 
@@ -91,7 +93,7 @@
           usesDomNode: #social;
         ">
         <a-plane 
-          position="0 0 0"
+          position="0 0.5 0"
           scale="3 4.5 1.5"
           position="0 0 0"
           base-opacity="1"
@@ -105,6 +107,23 @@
             height: 600;
             ">
         </a-plane>
+        <a-plane
+          camera-click
+          class="clickable"
+          position="0 -2.2 0"
+          scale="3 0.65 1"
+          base-opacity="0.6"
+          material="
+            color: white;
+          ">
+        </a-plane>
+        <a-text 
+          position="-1 -2.2 0.01"
+          value="TAKE PHOTO"
+          font-size="8"
+          letter-spacing="15"
+          wrap-pixels="1100">
+        </a-text>
       </a-entity>
 
       <!-- Left -->
@@ -113,7 +132,8 @@
         rotation="0 45 0"
         group-opacity="0.5"
         when-looked-at="
-          focus: 0.3; 
+          focusX: 0.3; 
+          focusY: 0.8; 
           property: group-opacity;
           dur: 100;
           in: 1; 
@@ -143,7 +163,8 @@
         look-at="#camera"
         group-opacity="0.5"
         when-looked-at="
-          focus: 0.5; 
+          focusX: 2; 
+          focusY: 0.4; 
           property: group-opacity;
           dur: 100;
           in: 1; 
@@ -153,12 +174,12 @@
         <!-- playbill -->
         <a-plane 
           position="-0.55 0 0"
-          scale="2.9 1 1"
+          scale="2.4 1 1"
           base-opacity="0.6"
           material="color: white;">
         </a-plane>
         <a-text 
-          position="-1.95 0.4 0.01"
+          position="-1.7 0.4 0.01"
           value="UP NEXT"
           font-size="8"
           letter-spacing="15"
@@ -169,14 +190,14 @@
 
         <!-- settings -->
         <a-plane 
-          position="1.5 0.275 0"
+          position="1.25 0.275 0"
           scale="1 0.45 1"
           base-opacity="0.6"
           material="color: white;"
           class="clickable">
         </a-plane>
         <a-text 
-          position="1.05 0.4 0.01"
+          position="0.85 0.4 0.01"
           value="SETTINGS"
           font-size="8"
           letter-spacing="15"
@@ -187,14 +208,14 @@
 
         <!-- move -->
         <a-plane 
-          position="1.5 -0.275 0"
+          position="1.25 -0.275 0"
           scale="1 0.45 1"
           base-opacity="0.6"
           material="color: white;"
           class="clickable">
         </a-plane>
         <a-text 
-          position="1.05 -0.125 0.01"
+          position="0.85 -0.125 0.01"
           value="MOVE"
           font-size="8"
           letter-spacing="15"
