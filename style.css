@@ -46,8 +46,8 @@ ul, li {
   height: 30px;
   border-radius: 15px;
   background-size: cover;
-  background-position: 50% 50%;
-  border: 1px solid white;
+  background-position: -2px -2px;
+  border: 2px solid white;
 }
 
 .social .post .image {

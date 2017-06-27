@@ -22,7 +22,7 @@
           <ul>
             <li class="post">
               <div class="profile" style="background-image:url('test.png');"></div>
-              <div class="icon" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('icons/fb.png');"></div>
               <main>
                 <h3>Sam Watkinson</h3>
                 <p>lol wtf omg bbq</p>
@@ -32,7 +32,7 @@
 
             <li class="post">
               <div class="profile" style="background-image:url('test.png');"></div>
-              <div class="icon" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('icons/insta.png');"></div>
               <main>
                 <h3>Sam Watkinson</h3>
                 <p>lol wtf omg bbq</p>
@@ -41,7 +41,7 @@
 
             <li class="post">
               <div class="profile" style="background-image:url('test.png');"></div>
-              <div class="icon" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('icons/twitter.png');"></div>
               <main>
                 <h3>Sam Watkinson</h3>
                 <p>lol wtf omg bbq</p>
@@ -50,7 +50,7 @@
 
             <li class="post">
               <div class="profile" style="background-image:url('test.png');"></div>
-              <div class="icon" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('icons/fb.png');"></div>
               <main>
                 <h3>Sam Watkinson</h3>
                 <p>lol wtf omg bbq</p>
@@ -59,7 +59,7 @@
 
             <li class="post">
               <div class="profile" style="background-image:url('test.png');"></div>
-              <div class="icon" style="background-image:url('test.png');"></div>
+              <div class="icon" style="background-image:url('icons/insta.png');"></div>
               <main>
                 <h3>Sam Watkinson</h3>
                 <p>lol wtf omg bbq</p>
@@ -76,6 +76,7 @@
     <a-scene>
       <a-assets>
         <video id="video" src="slayer.mp4" muted></video>
+        <img id="camera-image" src="icons/camera.png" />
       </a-assets>
 
       <!-- Right -->
@@ -105,7 +106,7 @@
             target: #all-html; 
             width: 400;
             height: 600;
-            ">
+          ">
         </a-plane>
         <a-plane
           camera-click
@@ -117,13 +118,12 @@
             color: white;
           ">
         </a-plane>
-        <a-text 
-          position="-1 -2.2 0.01"
-          value="TAKE PHOTO"
-          font-size="8"
-          letter-spacing="15"
-          wrap-pixels="1100">
-        </a-text>
+        <a-image
+          position="0 -2.2 0.01"
+          scale="0.4 0.38 0.4"
+          src="#camera-image"
+          >
+        </a-image>
       </a-entity>
 
       <!-- Left -->
@@ -223,6 +223,28 @@
           wrap-pixels="1100">
         </a-text>
       </a-entity>
+
+      <!-- Front & Center -->
+      <a-entity
+        position="0 1.6 -3"
+        rotation="0 0 0">
+        <a-plane 
+          id="image-preview"
+          opacity="0"
+          position="0 0.5 0"
+          scale="4 2 1.5">
+        </a-plane>
+        <a-text 
+          position="0 2 0"
+          rotation="15 0 0"
+          value="Say 'SNAP' to take a photo or 'CANCEL' to stop."
+          align="center"
+          scale="0.5 0.5 0.5"
+          font-size="24"
+          >
+        </a-text>
+      </a-entity>
+
 
 
       <a-camera id="camera">
