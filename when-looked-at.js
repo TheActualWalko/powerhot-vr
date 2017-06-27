@@ -96,11 +96,6 @@ AFRAME.registerComponent('when-looked-at', {
       }
       this.el.setAttribute(this.data.property, this.data.in);
       this.el.emit('__look-changed');
-      const htmlChildren = [...this.el.children].filter(x => x.className.split(' ').includes('uses-html'))
-      htmlChildren.forEach(x=>x.setAttribute('material', 'fps', 60));
-      setTimeout(()=>{
-        htmlChildren.forEach(x=>x.setAttribute('material', 'fps', 0));
-      }, 100);
       this.wasInView = true;
     } else if (!isInView && this.wasInView !== false){
       if (this.data.usesDomNode) {

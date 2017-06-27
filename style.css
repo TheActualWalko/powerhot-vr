@@ -9,10 +9,10 @@ ul, li {
 }
 
 .social, .artist {
-  color: #464646; 
+  color: #fff; 
   padding: 20px;
   position: absolute;
-  background-color: white;
+  background-color: black;
   top:0;
   left:0;
 }

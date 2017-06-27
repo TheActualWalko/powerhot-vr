@@ -14,7 +14,6 @@
     "aframe-lerp-component": "^1.0.3",
     "aframe-look-at-component": "^0.5.1",
     "axios": "^0.16.2",
-    "lodash.curry": "^4.1.1",
     "qs": "^6.4.0"
   },
   "devDependencies": {

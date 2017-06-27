@@ -15,16 +15,19 @@ function screenToJpegDataUrl (sceneId, use360, quality=0.92) {
 }
 
 function renderJpegToImage (jpeg) {
+
   const newImg = document.createElement('img'),
   url = URL.createObjectURL(jpeg);
 
   newImg.onload = function() {
     // no longer need to read the blob so it's revoked
-    URL.revokeObjectURL(url);
+    setTimeout(()=>URL.revokeObjectURL(url));
   };
 
   newImg.src = url;
-  document.body.appendChild(newImg);
+  newImg.id = 'photo';
+  document.querySelector('a-assets').appendChild(newImg); 
+  document.getElementById('photo-preview').setAttribute('src', '#photo');
 }
 
 function sendBlobToFacebook () {
@@ -32,11 +35,11 @@ function sendBlobToFacebook () {
 }
 
 function getJpegAndRender () {
-  return screenToJpegBlob('armsRace', false).then(renderJpegToImage);
+  return screenToJpegBlob('armsRace', true).then(renderJpegToImage);
 }
 
 function getJpegAndSend (message) {
-  return screenToJpegBlob('armsRace', false)
+  return screenToJpegBlob('armsRace', true)
     .then((blob) => {
       return ensureLogin()
       .then(shareImage(message, blob))
