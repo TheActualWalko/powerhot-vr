@@ -77,7 +77,6 @@
         <video id="video" src="slayer.mp4" muted></video>
       </a-assets>
 
-
       <!-- Right -->
       <a-entity
         position="4 2.9 -3"
@@ -143,9 +142,8 @@
         position="0 0.2 -2"
         look-at="#camera"
         group-opacity="0.5"
-        plays="#video"
         when-looked-at="
-          focus: 0.3; 
+          focus: 0.5; 
           property: group-opacity;
           dur: 100;
           in: 1; 
@@ -156,7 +154,7 @@
         <a-plane 
           position="-0.55 0 0"
           scale="2.9 1 1"
-          base-opacity="0.75"
+          base-opacity="0.6"
           material="color: white;">
         </a-plane>
         <a-text 
@@ -173,8 +171,9 @@
         <a-plane 
           position="1.5 0.275 0"
           scale="1 0.45 1"
-          base-opacity="0.75"
-          material="color: white;">
+          base-opacity="0.6"
+          material="color: white;"
+          class="clickable">
         </a-plane>
         <a-text 
           position="1.05 0.4 0.01"
@@ -190,8 +189,9 @@
         <a-plane 
           position="1.5 -0.275 0"
           scale="1 0.45 1"
-          base-opacity="0.75"
-          material="color: white;">
+          base-opacity="0.6"
+          material="color: white;"
+          class="clickable">
         </a-plane>
         <a-text 
           position="1.05 -0.125 0.01"
@@ -207,6 +207,7 @@
       <a-camera id="camera">
         <a-entity 
           cursor="fuse: true; fuseTimeout: 750"
+          raycaster="objects: .clickable"
           scale="0.1 0.1 0.1"
           position="0 0 -1"
           geometry="primitive: ring;"
