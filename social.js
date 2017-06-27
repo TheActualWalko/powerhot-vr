@@ -1,13 +1,8 @@
 class Social {
   getFeed(keywords) {
-    fetch(`http://localhost:8080/social?keys=${keywords}`)
-      .then(response => {
-        response.json().then(data => {
-          console.log('GOT FEED', data);
-        });
-      });
+    return fetch(`http://localhost:8080/social?keys=${keywords}`)
+      .then(response => response.json())
   }
 }
 
 const social = new Social();
-social.getFeed('primaverasound');

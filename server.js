@@ -12,7 +12,7 @@ auth.init().then(tokens => {
   app
   .use(bodyParser.json())
   .use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://10.0.0.235:3001');
+    res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.75:3001');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     next();
   })
