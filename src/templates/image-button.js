@@ -17,7 +17,7 @@ templates.imageButton = (position, scale, image, onClick)=>{
     );
   } 
   return `
-    ${templates.panel(position, scale, [componentName])}
+    ${templates.panel(position, scale, [componentName], true)}
     <a-image
       position="${position[0]} ${position[1]} ${position[2]+0.01}"
       scale="0.3 0.29 0.3"

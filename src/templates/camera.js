@@ -6,7 +6,8 @@ templates.camera = ()=>`
       scale="0.1 0.1 0.1"
       position="0 0 -1"
       geometry="primitive: ring;"
-      material="color: blue; opacity: 0;">
+      material="color: blue; opacity: 0;"
+      id="cursor">
       <a-animation
         begin="click"
         dur="400"

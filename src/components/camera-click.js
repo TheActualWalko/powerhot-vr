@@ -1,26 +1,26 @@
 AFRAME.registerComponent('camera-click', {
   init: function () {
+    let takePhotoUI;
+    let savePhotoUI;
     window.activeSpeech = new Speech();
     window.activeSpeech.init((result) => {
       console.log('DONE', result);
       if (result === 'cancel') {
-        document.getElementById('take-photo').setAttribute('group-opacity', 0);
-        document.getElementById('photo-preview').setAttribute('opacity', 0);
+        $(takePhotoUI).remove();
       } else if (result === 'snap') {
-        document.getElementById('take-photo').setAttribute('group-opacity', 0);
-        document.getElementById('photo-preview').setAttribute('opacity', 0);
+        $(takePhotoUI).remove();
+        $("#cursor")[0].setAttribute('opacity', 0);
         getJpegAndRender()
           .then(()=>{
-            document.getElementById('take-photo').setAttribute('group-opacity', 0);
-            document.getElementById('photo-preview').setAttribute('opacity', 1);
+            savePhotoUI = $(templates.savePhoto([0, 1.6, -3])).prependTo(scene);
+            document.getElementById('photo-preview').setAttribute('src', '#photo');
           });
       }
     });
 
     this.el.addEventListener('click', (evt) => {
+      takePhotoUI = $(templates.takePhoto([0, 1.6, -3])).prependTo(scene);
       window.activeSpeech.listen();
-      document.getElementById('take-photo').setAttribute('group-opacity', 1);
-      document.getElementById('photo-preview').setAttribute('opacity', 0);
     });
   }
 });

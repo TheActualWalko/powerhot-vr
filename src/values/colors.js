@@ -1,2 +1,2 @@
-values.panelBackground = "#fff";
-values.panelForeground = "#000";
+values.panelBackground = "#000";
+values.panelForeground = "#fff";

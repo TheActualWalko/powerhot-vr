@@ -43,9 +43,10 @@ templates.playbill = (position)=>`
     )}
     <a-text
       position="${PLAYBILL_STYLES.mainX} ${getPlaybillButtonY(0)} 0.01"
-      value="UP NEXT"
+      value="ITINERARY"
       color="${values.panelForeground}"
       font-size="8"
+      font="${values.font}"
       align="center"
       wrap-pixels="1100">
     </a-text>
@@ -54,21 +55,25 @@ templates.playbill = (position)=>`
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(0), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'ITINERARY',
-      ()=>console.log('itinerary'))}
+      null,
+      true)}
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(1), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'MERCH',
-      ()=>console.log('merch'))}
+      null,
+      false)}
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(2), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'MOVE',
-      ()=>console.log('move'))}
+      ()=>console.log('move'),
+      false)}
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(3), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'SETTINGS',
-      ()=>console.log('settings'))}
+      null,
+      false)}
   </a-entity>
 `;

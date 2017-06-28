@@ -1,10 +1,15 @@
 let lastTextComponentIndex = 0;
-templates.textButton = (position, scale, text, onClick)=>{
-  let componentName;
-  if (typeof onClick === 'string') {
-    componentName = onClick;
+templates.textButton = (position, scale, text, onClick, inverted)=>{
+  let components;
+  let clickable = true;
+  if (onClick === null) {
+    components = [];
+    clickable = false;
+  } else if (typeof onClick === 'string') {
+    components = [onClick];
   } else {
-    componentName = `text-button-${lastTextComponentIndex ++}-${text.toLowerCase()}`;
+    const componentName = `text-button-${lastTextComponentIndex ++}-${text.toLowerCase()}`;
+    components = [componentName];
     AFRAME.registerComponent(
       componentName, 
       {
@@ -17,12 +22,14 @@ templates.textButton = (position, scale, text, onClick)=>{
     );
   } 
   return `
-    ${templates.panel(position, scale, [componentName])}
+    ${templates.panel(position, scale, components, clickable, inverted)}
     <a-text
       position="${position[0]} ${position[1]} ${position[2]+0.01}"
       value="${text}"
+      font="${values.font}"
+      font-weight="600"
       align="center"
-      color="${values.panelForeground}"
+      color="${inverted ? values.panelBackground : values.panelForeground}"
       font-size="8"
       wrap-pixels="1100">
     </a-text>
