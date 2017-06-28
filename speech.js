@@ -7,7 +7,7 @@ function LevenshteinDistance(s, t) {
     const sLength = s.length;
     const tLength = t.length;
     const matrix = [];
-console.log(s, t);
+
     if(sLength === 0) return tLength;
     if(tLength === 0) return sLength;
 
