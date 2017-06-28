@@ -1,7 +1,7 @@
-templates.artist = ()=>`
+templates.artist = (position)=>`
   <a-entity
-    position="-4.5 2.9 -4"
-    rotation="0 30 0"
+    position="${position.join(' ')}"
+    look-at="#camera"
     group-opacity="0"
     when-looked-at="
       property: group-opacity;
@@ -14,14 +14,14 @@ templates.artist = ()=>`
     <a-plane 
       class="uses-html"
       position="0 0.5 0"
-      scale="3 4.5 1.5"
+      scale="2.4 3.5 1"
       position="0 0 0"
       material="
         shader: html; 
         target: #all-html; 
-        width: 400;
-        height: 600;
-        ">
+        width: 480;
+        height: 700;
+      ">
     </a-plane>
   </a-entity>
 `;
