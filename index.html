@@ -11,11 +11,14 @@
     <script src="./node_modules/aframe-html-shader/dist/aframe-html-shader.js"></script>
     <script src="./axios.js"></script>
     <script src="./jquery.js"></script>
-    
+
+    <script src="./src/artist/artistData.js"></script>
+    <script src="./src/artist/artist.js"></script>
+
     <script src="./src/social.js"></script>
     <script src="./src/speech.js"></script>
     <script src="./src/shoot-the-screen.js"></script>
-    
+
     <script src="./src/components/group-opacity.js"></script>
     <script src="./src/components/when-looked-at.js"></script>
     <script src="./src/components/plays.js"></script>
@@ -28,7 +31,7 @@
     <script src="./src/values/values-store.js"></script>
     <script src="./src/values/fonts.js"></script>
     <script src="./src/values/colors.js"></script>
-    
+
     <script src="./src/templates/template-store.js"></script>
     <script src="./src/templates/panel.js"></script>
     <script src="./src/templates/text-button.js"></script>
@@ -41,25 +44,6 @@
     <script src="./src/templates/take-photo.js"></script>
     <script src="./src/templates/save-photo.js"></script>
     <script src="./src/main.js"></script>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId            : "214588375268980",//214588375268980, //214588375268980
-          autoLogAppEvents : true,
-          xfbml            : true,
-          version          : 'v2.9'
-        });
-        FB.AppEvents.logPageView();
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -69,9 +53,7 @@
           <ul id="posts">
           </ul>
         </div>
-        <div id="artist" class="artist hidden" style="width:480px; height:700px;">
-          <h2>Artist</h2>
-          <img src="./test.png" />
+        <div id="artist" class="artist hidden" style="width:400px; height:600px;background-color:#111;border:#777 solid 2px;">
         </div>
       </div>
     </div>
