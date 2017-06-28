@@ -8,6 +8,7 @@ AFRAME.registerComponent('plays', {
       if (video.paused) {
         video.play();
       } else {
+        video.currentTime = 0;
         video.pause();
       }
     });

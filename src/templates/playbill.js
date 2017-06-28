@@ -67,7 +67,7 @@ templates.playbill = (position)=>`
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(2), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'MOVE',
-      ()=>console.log('move'),
+      'plays="#video"',
       false)}
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(3), 0],
