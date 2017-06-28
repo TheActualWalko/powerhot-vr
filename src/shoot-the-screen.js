@@ -7,13 +7,6 @@ function screenToJpegBlob (sceneId, use360, quality=0.92) { //args: string, bool
   });
 }
 
-function screenToJpegDataUrl (sceneId, use360, quality=0.92) {
-  const screenshot = document.querySelector(`#${sceneId}`).components.screenshot;
-  const {camera, size, projection} = screenshot.setCapture(use360 ? 'equirectangular' : 'perspective');
-  screenshot.renderCapture(camera, size, projection);
-  return screenshot.canvas.toDataURL()('image/jpeg', quality);
-}
-
 function renderJpegToImage (jpeg) {
 
   const newImg = document.createElement('img'),
@@ -26,25 +19,30 @@ function renderJpegToImage (jpeg) {
 
   newImg.src = url;
   newImg.id = 'photo';
-  document.querySelector('a-assets').appendChild(newImg); 
+  document.querySelector('a-assets').appendChild(newImg);
   document.getElementById('photo-preview').setAttribute('src', '#photo');
 }
 
-function sendBlobToFacebook () {
-
+function saveJpegBlob (jpeg) {
+  const fileName = `screenshot-${document.title.toLowerCase()}-${Date.now()}.png`;
+  const linkEl = document.createElement('a');
+  const url = URL.createObjectURL(jpeg);
+  linkEl.href = url;
+  linkEl.setAttribute('download', fileName);
+  linkEl.innerHTML = 'downloading...';
+  linkEl.style.display = 'none';
+  document.body.appendChild(linkEl);
+  setTimeout(function () {
+    linkEl.click();
+    document.body.removeChild(linkEl);
+  }, 1);
 }
 
 function getJpegAndRender () {
   return screenToJpegBlob('armsRace', true).then(renderJpegToImage);
 }
 
-function getJpegAndSend (message) {
-  return screenToJpegBlob('armsRace', true)
-    .then((blob) => {
-      return ensureLogin()
-      .then(shareImage(message, blob))
-      .then((response) => {console.log({response})})
-      .catch((err) => {console.log({err})})
-    })
+function getJpegAndSave (message, use360=true) {
+  screenToJpegBlob('armsRace', use360).then(saveJpegBlob);
 }
 
