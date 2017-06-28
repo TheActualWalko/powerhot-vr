@@ -4,29 +4,26 @@ const state = {
 };
 
 function LevenshteinDistance(s, t) {
-    const sLength = s.length;
-    const tLength = t.length;
-    const matrix = [];
+  const sLength = s.length;
+  const tLength = t.length;
+  const matrix = [];
 
-    if(sLength === 0) return tLength;
-    if(tLength === 0) return sLength;
+  if(sLength === 0) return tLength;
+  if(tLength === 0) return sLength;
 
-    for(let i = 0; i <= sLength; matrix[i] = [i++]){
-	}
+  for(let i = 0; i <= sLength; matrix[i] = [i++]){}
+  for(let j = 0; j <= tLength; matrix[0][j] = j++){}
 
-    for(let j = 0; j <= tLength; matrix[0][j] = j++){
-	}
+  for(let i = 1; i <= sLength; i++){
+    for(let j = 1; j <= tLength; j++){
+      const cost = t[j - 1] === s[i - 1] ? 0 : 1;
+      const currMin = Math.min(matrix[i - 1][j] + 1, matrix[i][j - 1] + 1);
 
-	for(let i = 1; i <= sLength; i++){
-		for(let j = 1; j <= tLength; j++){
-			const cost = t[j - 1] === s[i - 1] ? 0 : 1;
-			const currMin = Math.min(matrix[i - 1][j] + 1, matrix[i][j - 1] + 1);
-
-			matrix[i][j] = Math.min(currMin, matrix[i - 1][j - 1] + cost);
-        }
+      matrix[i][j] = Math.min(currMin, matrix[i - 1][j - 1] + cost);
     }
+  }
 
-	return matrix[sLength][tLength];
+  return matrix[sLength][tLength];
 }
 
 const commands = ['snap', 'cancel', 'post'];
