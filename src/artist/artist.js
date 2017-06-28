@@ -48,5 +48,5 @@ function setArtistProfile({
 }
 
 setTimeout(() => {
-  setArtistProfile(window.Samiami);
+  setArtistProfile(window.BrunoMars);
 }, 0)
