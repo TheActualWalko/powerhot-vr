@@ -12,14 +12,14 @@ AFRAME.registerComponent('camera-click', {
         $("#cursor")[0].setAttribute('opacity', 0);
         getJpegAndRender()
           .then(()=>{
-            savePhotoUI = $(templates.savePhoto([0, 1.6, -3])).prependTo(scene);
+            savePhotoUI = $(templates.savePhoto([0, 1.6, -3])).insertAfter($("#social-panel"));
             document.getElementById('photo-preview').setAttribute('src', '#photo');
           });
       }
     });
 
     this.el.addEventListener('click', (evt) => {
-      takePhotoUI = $(templates.takePhoto([0, 1.6, -3])).prependTo(scene);
+      takePhotoUI = $(templates.takePhoto([0, 1.6, -3])).insertAfter($("#social-panel"));
       window.activeSpeech.listen();
     });
   }

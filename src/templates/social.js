@@ -1,5 +1,6 @@
 templates.social = (position)=>`
   <a-entity
+    id="social-panel"
     position="${position.join(' ')}"
     look-at="#camera"
     group-opacity="0"

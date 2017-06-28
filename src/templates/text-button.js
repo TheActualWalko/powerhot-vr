@@ -3,13 +3,13 @@ templates.textButton = (position, scale, text, onClick, inverted)=>{
   let components;
   let clickable = true;
   if (onClick === null) {
-    components = [];
+    components = ['hover-reaction'];
     clickable = false;
   } else if (typeof onClick === 'string') {
-    components = [onClick];
+    components = [onClick, 'hover-reaction'];
   } else {
     const componentName = `text-button-${lastTextComponentIndex ++}-${text.toLowerCase()}`;
-    components = [componentName];
+    components = [componentName, 'hover-reaction'];
     AFRAME.registerComponent(
       componentName, 
       {

@@ -6,7 +6,7 @@ templates.camera = ()=>`
       scale="0.1 0.1 0.1"
       position="0 0 -1"
       geometry="primitive: ring;"
-      material="color: blue; opacity: 0;"
+      material="color: #43a7f6; opacity: 0;"
       id="cursor">
       <a-animation
         begin="click"
@@ -29,10 +29,17 @@ templates.camera = ()=>`
         dur="250"
         easing="ease-in"
         attribute="material.opacity"
-        to="1">
+        to="0.75">
       </a-animation>
       <a-animation
         begin="mouseleave"
+        dur="250"
+        easing="ease-out"
+        attribute="material.opacity"
+        to="0">
+      </a-animation>
+      <a-animation
+        begin="click"
         dur="250"
         easing="ease-out"
         attribute="material.opacity"
