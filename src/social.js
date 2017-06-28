@@ -1,3 +1,14 @@
+class Social {
+  getFeed(keywords) {
+    return fetch(`//192.168.1.75:8080/social?keys=${keywords}`)
+      .then(response => {
+        return response.json()
+      })
+  }
+}
+
+const social = new Social();
+
 social
   .getFeed('primaverasound')
   .then((data)=>{
