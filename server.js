@@ -4,6 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Auth = require('./auth');
 const request = require('request');
+const privateKey = fs.readFileSync( 'server.key' );    
+const certificate = fs.readFileSync( 'server.cer' );
 
 const app = express();
 const auth = new Auth();
@@ -42,8 +44,11 @@ auth.init().then(tokens => {
 
         res.send(JSON.stringify(data));
       })
-    })
-    .listen(8080);
+    });
+    https.createServer({    
+        key: privateKey,   
+        cert: certificate    
+    }, app).listen(8080);
 });
 
 

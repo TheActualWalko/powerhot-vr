@@ -3,7 +3,7 @@ templates.social = (position)=>`
     id="social-panel"
     position="${position.join(' ')}"
     wiggles="rate: 30; scale: 0.03"
-    look-at="#camera"
+    look-at="#focal-point"
     group-opacity="0"
     when-looked-at="
       focusX: 0.3; 
@@ -29,7 +29,7 @@ templates.social = (position)=>`
       material="shader: flat">
     </a-plane>
     ${templates.imageButton(
-      [0, -1.55, 0], 
+      [0, -1.6, 0], 
       [2.4, 0.5, 1],
       '#camera-image', 
       'camera-click')}
