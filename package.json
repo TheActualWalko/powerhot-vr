@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "budo --live --verbose --port 3001 --open --cors",
+    "start": "nodemon server.js --watch server.js",
     "start-ssl": "budo --live --verbose --port 3001 --open --cors --ssl --cert=server.cer --key=server.key"
   },
   "dependencies": {
