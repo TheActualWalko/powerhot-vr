@@ -31,9 +31,15 @@ function setArtistData (artistObject) {
 }
 
 function setArtistDataFromQS () {
-  artistKey = window.location.search.split('=')[1];
+  const params = window.location.search.slice(1).split('&').reduce((paramObj, queryComponent) => {
+    [key, value] = queryComponent.split('=');
+    paramObj[key] = value;
+    return paramObj;
+  });
 
-  setArtistData(artists[artistKey] || artists.Samiami);
+  const artistName = params['key'];
+
+  setArtistData(artists[artistName] || artists.Samiami);
 }
 
 setArtistDataFromQS();
