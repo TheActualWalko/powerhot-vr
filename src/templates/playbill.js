@@ -18,6 +18,22 @@ const getPlaybillButtonY = (index) => {
   return topButtonY - (index * (PLAYBILL_STYLES.buttonHeight + PLAYBILL_STYLES.margin));
 }
 
+let movingOverlay;
+
+const activateMoveButton = ()=>{
+  movingOverlay = $(templates.textButton(
+    [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(2), 0.1],
+    [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
+    'PICK A MARKER',
+    null,
+    true
+  )).insertAfter("#move-button");
+}
+
+const deactivateMoveButton = ()=>{
+  movingOverlay.remove();
+}
+
 templates.playbill = (position)=>`
   <a-entity
     position="${position.join(' ')}"
@@ -67,7 +83,7 @@ templates.playbill = (position)=>`
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(2), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'MOVE',
-      ()=>console.log('move'),
+      'shows-move-options id="move-button"',
       false)}
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(3), 0],

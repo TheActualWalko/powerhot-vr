@@ -13,6 +13,7 @@
     "aframe-html-shader": "^0.2.0",
     "aframe-lerp-component": "^1.0.3",
     "aframe-look-at-component": "^0.5.1",
+    "aframe-sprite-component": "^0.1.1",
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
