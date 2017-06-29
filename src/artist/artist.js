@@ -94,5 +94,5 @@ function setArtistProfile({
 }
 
 setTimeout(() => {
-  setArtistProfile(window.artists.BrunoMars);
+  setArtistProfile(window.artistData);
 }, 0)
