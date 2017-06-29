@@ -4,10 +4,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const Auth = require('./auth');
 const request = require('request');
-const privateKey = fs.readFileSync( 'server.key' );
-const certificate = fs.readFileSync( 'server.cer' );
-
-
 
 const app = express();
 const auth = new Auth();
@@ -17,12 +13,8 @@ auth.init().then(tokens => {
 
   app
     .use(bodyParser.json())
-    .use(function (req, res, next) {
-      res.setHeader('Access-Control-Allow-Origin', 'https://192.168.1.75:3001');
-//      res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.75:3001');
-      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-      next();
-    })
+    .use(express.static('src'))
+    .use(express.static('node_modules'))
     .use('/social', (req, res, next) => {
       const {query} = req;
       const {keys} = query;
@@ -49,14 +41,9 @@ auth.init().then(tokens => {
 
 
         res.send(JSON.stringify(data));
-      });
+      })
     })
-  //  .listen(8080);
-
-   https.createServer({
-       key: privateKey,
-       cert: certificate
-   }, app).listen(8080);
+    .listen(8080);
 });
 
 

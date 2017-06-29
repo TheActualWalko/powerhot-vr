@@ -1,0 +1,135 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  background: #222;
+}
+
+*{
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+.social, .artist, .itinerary {
+  color: #fff; 
+  padding: 20px;
+  position: absolute;
+  background-color: #222;
+  top:0;
+  left:0;
+}
+
+.hidden {
+  display: none;
+}
+
+.social {
+  padding: 10px 20px 0 20px;
+}
+
+.social .post {
+  position: relative;
+  padding-bottom: 20px;
+  font-size: 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.social .post .profile {
+  position: absolute;
+  left: 0px;
+  top: 15px;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.social .post .icon {
+  position: absolute;
+  left: 70px;
+  top: 80px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: -2px -2px;
+  border: 2px solid white;
+}
+
+.social .post .image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.social .post main {
+  padding-left: 110px;
+  padding-top: 17px;
+  min-height: 100px;
+}
+
+.social .post h3 {
+  margin: 0 0 5px 0; 
+  padding: 0;
+}
+
+.social .post p {
+  font-weight: 200;
+  color: #999;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.itinerary {
+  padding-top: 100px;
+}
+.itinerary .performance:first-of-type {
+  border-top: 1px solid rgba(255,255,255,0.3);
+}
+.itinerary .performance {
+  position: relative;
+  padding-bottom: 20px;
+  font-size: 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.itinerary .up-next {
+  color: #43a7fb;
+}
+
+.itinerary .performance .profile {
+  position: absolute;
+  left: 0px;
+  top: 15px;
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.itinerary .performance main {
+  padding-left: 110px;
+  padding-top: 27px;
+  min-height: 100px;
+}
+
+.itinerary .performance h3 {
+  margin: 0 0 5px 0; 
+  padding: 0;
+}
+
+.itinerary .performance p {
+  font-weight: 200;
+  color: #999;
+  margin: 0;
+  padding: 0;
+}
+

@@ -43,18 +43,29 @@ templates.playbill = (position)=>`
     when-looked-at="
       focusX: 2; 
       focusY: 0.4; 
+      usesDomNode: #itinerary;
     ">
 
     <!-- playbill -->
-    ${templates.panel(
-      [PLAYBILL_STYLES.mainX, 0, 0],
-      [
-        PLAYBILL_STYLES.mainWidth, 
-        PLAYBILL_STYLES.mainHeight, 
-        1
-      ],
-      []
-    )}
+
+    <a-plane 
+      class="uses-html"
+      position="${PLAYBILL_STYLES.mainX} 0 0"
+      scale="${PLAYBILL_STYLES.mainWidth} ${PLAYBILL_STYLES.mainHeight} 1"
+      position="0 0 0"
+      material="
+        shader: html; 
+        target: #all-html; 
+        width: 480;
+        height: 460;
+      ">
+    </a-plane>
+    <a-plane
+      color="${values.panelEchoBackground}"
+      position="${PLAYBILL_STYLES.mainX} 0 -0.1"
+      scale="${PLAYBILL_STYLES.mainWidth+0.1} ${PLAYBILL_STYLES.mainHeight+0.1} 1.1"
+      material="shader: flat">
+    </a-plane>
     <a-text
       position="${PLAYBILL_STYLES.mainX} ${getPlaybillButtonY(0)} 0.01"
       value="ITINERARY"

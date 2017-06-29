@@ -93,10 +93,16 @@ AFRAME.registerComponent('when-looked-at', {
               .each(function(){
                 this.setAttribute('material', 'fps', 5);
               });
+            setTimeout(()=>{
+              $(this.el)
+                .find('.uses-html')
+                .each(function(){
+                  this.setAttribute('material', 'fps', 0);
+                });
+            }, 1000)
           }, 0);
         }
         this.el.setAttribute('group-opacity', 1);
-        this.el.emit('__look-changed');
         this.wasInView = true;
         this.transitionInStep = 0;
         this.transitionOutStep = transitionStepLimit;
@@ -125,7 +131,6 @@ AFRAME.registerComponent('when-looked-at', {
       this.transitionOutStep --;
     } else if (!this.wasInView && this.transitionOutStep === 0) {
       this.el.setAttribute('group-opacity', 0);
-      this.el.emit('__look-changed');
     }
   },
 });

@@ -1,6 +1,6 @@
 class Social {
   getFeed(keywords) {
-    return fetch(`//192.168.1.75:8080/social?keys=${keywords}`)
+    return fetch(`/social?keys=${keywords}`)
       .then(response => {
         return response.json()
       })
@@ -18,10 +18,11 @@ social
           <div class="profile" style="background-image:url('${profileImage}');"></div>
           <div class="icon" style="background-image:url('icons/twitter.png');"></div>
           <main>
-            <h3>${name}</h3>
+            <h3>${name}</h3><time>${date.split(' ').find(x=>x.includes(':')).split(':').slice(0,1).join(':')}</time>
             <p>${text}</p>
           </main>
         </li>
       `);
     });
   });
+
