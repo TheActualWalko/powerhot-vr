@@ -1,2 +1,5 @@
-values.panelBackground = "#111";
+values.panelBackground = "#222";
 values.panelForeground = "#fff";
+
+values.panelEchoBackground = "#444";
+values.panelEchoForeground = "#ddd";

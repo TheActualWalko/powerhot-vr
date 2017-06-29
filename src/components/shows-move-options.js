@@ -9,9 +9,10 @@ AFRAME.registerComponent('shows-move-options', {
           return $(`
             <a-sprite
               class="clickable move-option"
-              wiggles
+              wiggles="rate: 10; scale: 0.1"
               plays="${x.src}"
               position="${coords.join(' ')}"
+              resize="1.2 1.2 1.2"
               src="sprites/move.png">
             </a-sprite>
           `).insertAfter($("#social-panel"));

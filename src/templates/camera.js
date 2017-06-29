@@ -3,7 +3,7 @@ templates.camera = ()=>`
     <a-entity
       cursor="fuse: true; fuseTimeout: 750"
       raycaster="objects: .clickable"
-      scale="0.1 0.1 0.1"
+      scale="0.2 0.2 0.2"
       position="0 0 0"
       geometry="primitive: ring;"
       material="color: #43a7f6;"
@@ -14,14 +14,14 @@ templates.camera = ()=>`
         easing="ease-out"
         attribute="scale"
         from="0.01 0.01 0.01"
-        to="0.1 0.1 0.1">
+        to="0.2 0.2 0.2">
       </a-animation>
       <a-animation
         begin="cursor-fusing"
         dur="750"
         easing="ease-in"
         attribute="scale"
-        from="0.1 0.1 0.1"
+        from="0.2 0.2 0.2"
         to="0.01 0.01 0.01">
       </a-animation>
       <a-animation
