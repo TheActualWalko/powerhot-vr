@@ -1,6 +1,6 @@
 const artists = {
   BrunoMars: {
-    image: '../assets/bruno_mars.jpg',
+    image: 'assets/BrunoMars.jpg',
     name: 'BRUNO MARS',
     song: 'Just The Way You Are',
     isNowPerforming: true,
@@ -8,7 +8,7 @@ const artists = {
     end: '9:00pm',
   },
   Samiami: {
-    image: '../assets/19549522_10155631220882259_280100159_o.jpg',
+    image: 'assets/Sam.png',
     name: 'SAM WATKINSON',
     song: 'Help I\'m Locked In A Computer',
     isNowPerforming: true,
@@ -16,7 +16,7 @@ const artists = {
     end: 'THE END OF TIME',
   },
   TheProdigy: {
-    image: 'assets/TheProdigy.jpg',
+    image: 'assets/TheProdigy2.png',
     name: 'THE PRODIGY',
     song: 'Firestarter',
     isNowPerforming: true,
