@@ -18,28 +18,20 @@ const getPlaybillButtonY = (index) => {
   return topButtonY - (index * (PLAYBILL_STYLES.buttonHeight + PLAYBILL_STYLES.margin));
 }
 
-let moveButton;
+let movingOverlay;
 
 const activateMoveButton = ()=>{
-  $("#move-button").remove();
-  moveButton = $(templates.textButton(
-    [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(2), 0],
+  movingOverlay = $(templates.textButton(
+    [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(2), 0.1],
     [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
     'PICK A MARKER',
     null,
     true
-  )).insertAfter("#merch-button");
+  )).insertAfter("#move-button");
 }
 
 const deactivateMoveButton = ()=>{
-  moveButton.remove();
-  $(templates.textButton(
-    [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(2), 0],
-    [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
-    'MOVE',
-    'shows-move-options id="move-button"',
-    false
-  )).insertAfter("#merch-button");
+  movingOverlay.remove();
 }
 
 templates.playbill = (position)=>`
@@ -85,7 +77,7 @@ templates.playbill = (position)=>`
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(1), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'MERCH',
-      'id="merch-button"',
+      null,
       false)}
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(2), 0],

@@ -5,6 +5,7 @@ if (typeof AFRAME === 'undefined') {
 }
 
 let lookedAtHTMLtimeout;
+const transitionStepLimit = 5;
 
 AFRAME.registerComponent('when-looked-at', {
   schema: {
@@ -39,6 +40,8 @@ AFRAME.registerComponent('when-looked-at', {
     const camera = document.querySelector('#camera');
     const frustum = new THREE.Frustum();
     this.el.setAttribute(this.data.property, this.data.out);
+    this.initialPos = Number(this.el.getAttribute('position').z);
+    this.initialScale = Number(this.el.getAttribute('scale').y);
     this.camera = camera;
     this.frustum = frustum;
     this.wasInView = null;
@@ -102,7 +105,9 @@ AFRAME.registerComponent('when-looked-at', {
       this.el.setAttribute(this.data.property, this.data.in);
       this.el.emit('__look-changed');
       this.wasInView = true;
+      this.transitionStep = 0;
     } else if (!isInView && this.wasInView !== false){
+      this.transitionStep = transitionStepLimit;
       if (this.data.usesDomNode) {
         document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
         $(this.el)
@@ -114,6 +119,11 @@ AFRAME.registerComponent('when-looked-at', {
       this.el.setAttribute(this.data.property, this.data.out);
       this.el.emit('__look-changed');
       this.wasInView = false;
+    }
+    if (this.transitionStep <= transitionStepLimit) {
+      //this.el.setAttribute('position', 'z', this.initialPos - (0.5 * (this.transitionStep/transitionStepLimit)));
+      this.el.setAttribute('scale', 'y', this.initialScale * ((5+this.transitionStep)/(5+transitionStepLimit)));
+      this.transitionStep ++;
     }
   },
 });

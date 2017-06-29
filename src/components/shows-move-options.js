@@ -9,6 +9,7 @@ AFRAME.registerComponent('shows-move-options', {
           return $(`
             <a-sprite
               class="clickable move-option"
+              wiggles
               plays="${x.src}"
               position="${coords.join(' ')}"
               src="sprites/move.png">
