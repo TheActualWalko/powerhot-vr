@@ -99,7 +99,7 @@ AFRAME.registerComponent('when-looked-at', {
                 .each(function(){
                   this.setAttribute('material', 'fps', 0);
                 });
-            }, 250)
+            }, 1000)
           }, 0);
         }
         this.el.setAttribute('group-opacity', 1);

@@ -53,24 +53,24 @@ templates.artist = (position)=>`
       [buttonLeft + 2 * buttonDelta, buttonTop, 0],
       [buttonWidth, buttonWidth, buttonWidth],
       '#thumbs-up',
-      () => {})}
+      null)}
     ${templates.imageButton(
       [buttonLeft + 3 * buttonDelta, buttonTop, 0],
       [buttonWidth, buttonWidth, buttonWidth],
       '#thumbs-down',
-      () => {})}
+      null)}
     <!- bottom two buttons ->
     ${templates.textButton(
       [lowerButtonLeft, lowerButtonTop, 0],
       [lowerButtonWidth , buttonWidth, buttonWidth],
       'SET INFO',
-      () => {},
-      true)}
+      null)}
     ${templates.textButton(
       [lowerButtonLeft + lowerButtonDelta, lowerButtonTop, 0],
       [lowerButtonWidth , buttonWidth, buttonWidth],
       'ARTIST BIO',
-      () => {})}
+      null,
+      true)}
   </a-entity>
 `;
 
