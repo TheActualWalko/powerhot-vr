@@ -21,7 +21,8 @@
     "request": "^2.81.0"
   },
   "devDependencies": {
-    "budo": "^8.4.0"
+    "budo": "^8.4.0",
+    "nodemon": "^1.11.0"
   },
   "keywords": [
     "aframe",

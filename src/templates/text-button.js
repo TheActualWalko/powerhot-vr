@@ -11,7 +11,7 @@ templates.textButton = (position, scale, text, onClick, inverted)=>{
     const componentName = `text-button-${lastTextComponentIndex ++}-${text.toLowerCase()}`;
     components = [componentName, 'hover-reaction'];
     AFRAME.registerComponent(
-      componentName, 
+      componentName,
       {
         init: function(){
           this.el.addEventListener('click', (evt) => {
@@ -20,7 +20,7 @@ templates.textButton = (position, scale, text, onClick, inverted)=>{
         }
       }
     );
-  } 
+  }
   return `
     ${templates.panel(position, scale, components, clickable, inverted)}
     <a-text
