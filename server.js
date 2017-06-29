@@ -18,8 +18,8 @@ auth.init().then(tokens => {
   app
     .use(bodyParser.json())
     .use(function (req, res, next) {
-//      res.setHeader('Access-Control-Allow-Origin', 'https://192.168.1.75:3001');
-      res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.75:3001');
+      res.setHeader('Access-Control-Allow-Origin', 'https://192.168.1.75:3001');
+//      res.setHeader('Access-Control-Allow-Origin', 'http://192.168.1.75:3001');
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
       next();
     })
@@ -51,12 +51,12 @@ auth.init().then(tokens => {
         res.send(JSON.stringify(data));
       });
     })
-    .listen(8080);
+  //  .listen(8080);
 
-  // https.createServer({
-  //     key: privateKey,
-  //     cert: certificate
-  // }, app).listen(8080);
+   https.createServer({
+       key: privateKey,
+       cert: certificate
+   }, app).listen(8080);
 });
 
 
