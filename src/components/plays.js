@@ -4,13 +4,20 @@ AFRAME.registerComponent('plays', {
   },
   init: function () {
     this.el.addEventListener('click', (evt) => {
-      const video = document.querySelector(this.data);
-      if (video.paused) {
+      const video = document.querySelector("#video");
+      // if (video.paused) {
+        video.setAttribute('src', this.data);
         video.play();
-      } else {
-        video.currentTime = 0;
-        video.pause();
-      }
+        $('.move-option').each(function(){
+          $(this).remove();
+        });
+        MOVE_LOCATIONS.forEach(x=>{
+          if (x.src === this.data) {
+            x.active = true;
+          } else {
+            x.active = false;
+          }
+        });
     });
   }
 });
