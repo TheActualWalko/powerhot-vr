@@ -16,7 +16,7 @@ AFRAME.registerComponent('logo-animate', {
     }
     let now = new Date().getTime() - this.initTime;
     if (now > this.duration) {
-      $(this.el).remove();
+      $(this.el).remove()
       return;
     }
     if (now < this.fadeInStartTime) {
@@ -51,7 +51,7 @@ AFRAME.registerComponent('logo-animate-glow', {
     }
     let now = new Date().getTime() - this.initTime;
     if (now > this.duration) {
-      $(this.el).remove();
+      $(this.el).remove()
       return;
     }
     if (now < this.fadeInStartTime) {
@@ -60,7 +60,7 @@ AFRAME.registerComponent('logo-animate-glow', {
     if (now > this.fadeInStartTime && now < this.fadeInEndTime) {
       this.el.setAttribute('material', 'opacity', 0.8 * ((now - this.fadeInStartTime) / (this.fadeInEndTime - this.fadeInStartTime)));
     }
-    this.el.setAttribute('position', 'z', ((now/this.duration) * 3) - 4)
+    this.el.setAttribute('position', 'z', ((now/this.duration) * 3) - 4.01)
     if (now > this.fadeOutTime) {
       this.el.setAttribute('material', 'opacity', 0.8 * ((1-((now-this.fadeOutTime) / (this.duration-this.fadeOutTime)))));
     }

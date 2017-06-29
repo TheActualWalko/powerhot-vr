@@ -9,9 +9,16 @@ AFRAME.registerComponent('plays', {
       const lastSrc = video.getAttribute('src');
       let time = 0;
       video.pause();
+      video.currentTime = 0;
       if (lastSrc === this.data) {
-        video.setAttribute('src', this.data);
-        video.play();
+        $('.move-option').each(function(){
+          $(this).remove();
+        });
+        setTimeout(()=>{
+          scene.prepend(templates.iheartLogo([0, 1.55, -1]));
+          video.setAttribute('src', this.data);
+          video.play();
+        }, 3000);
       } else {
         const zoomInterval = setInterval(()=>{
           time ++;

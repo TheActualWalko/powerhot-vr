@@ -38,7 +38,7 @@ function setArtistDataFromQS () {
   }, {});
 
   const artistName = params['key'];
-  setArtistData(artists[artistName] || artists.Samiami);
+  setArtistData(artists[artistName] || artists.TheProdigy);
 }
 
 setArtistDataFromQS();
