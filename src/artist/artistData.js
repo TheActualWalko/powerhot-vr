@@ -16,7 +16,7 @@ const artists = {
     end: 'THE END OF TIME',
   },
   TheProdigy: {
-    image: '../assets/TheProdigy(c)2009MickRock.jpg',
+    image: 'assets/TheProdigy.jpg',
     name: 'THE PRODIGY',
     song: 'Firestarter',
     isNowPerforming: true,
@@ -35,10 +35,9 @@ function setArtistDataFromQS () {
     [key, value] = queryComponent.split('=');
     paramObj[key] = value;
     return paramObj;
-  });
+  }, {});
 
   const artistName = params['key'];
-
   setArtistData(artists[artistName] || artists.Samiami);
 }
 
