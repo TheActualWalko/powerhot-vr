@@ -1,5 +1,5 @@
 const containerWidth = '480px'
-const imageHeight = '320px' // 2/3 of container width
+const imageHeight = '300px'
 const paddingAdjustment= '-0.4px'
 
 const imageContainer = `
@@ -94,5 +94,5 @@ function setArtistProfile({
 }
 
 setTimeout(() => {
-  setArtistProfile(window.artists.BrunoMars);
+  setArtistProfile(window.artistData);
 }, 0)

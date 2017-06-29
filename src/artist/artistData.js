@@ -1,4 +1,4 @@
-window.artists = {
+const artists = {
   BrunoMars: {
     image: '../assets/bruno_mars.jpg',
     name: 'BRUNO MARS',
@@ -16,3 +16,17 @@ window.artists = {
     end: 'THE END OF TIME',
   }
 };
+
+
+function setArtistData (artistObject) {
+  console.log({artistObject})
+  window.artistData = artistObject;
+}
+
+function setArtistDataFromQS () {
+  artistKey = window.location.search.split('=')[1];
+  console.log({artistKey})
+  setArtistData(artists[artistKey]);
+}
+
+setArtistDataFromQS();
