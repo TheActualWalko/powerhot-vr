@@ -4,6 +4,7 @@ AFRAME.registerComponent('plays', {
   },
   init: function () {
     this.el.addEventListener('click', (evt) => {
+      deactivateMoveButton();
       const video = document.querySelector("#video");
       // if (video.paused) {
         video.setAttribute('src', this.data);
