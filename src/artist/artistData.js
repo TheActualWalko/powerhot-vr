@@ -24,7 +24,7 @@ function setArtistData (artistObject) {
 }
 
 function setArtistDataFromQS () {
-  artistKey = window.location.search.split('=')[1];
+  artistKey = window.location.search.split('=')[1] || 'BrunoMars';
   console.log({artistKey})
   setArtistData(artists[artistKey]);
 }
