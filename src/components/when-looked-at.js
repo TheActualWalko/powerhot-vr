@@ -88,6 +88,10 @@ AFRAME.registerComponent('when-looked-at', {
           setTimeout(()=>{
             document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
             document.querySelector(this.data.usesDomNode).classList.remove('hidden');
+            if (this.hasRendered) {
+              return;
+            }
+            this.hasRendered = true;
             $(this.el)
               .find('.uses-html')
               .each(function(){

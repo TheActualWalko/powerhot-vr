@@ -31,14 +31,16 @@ const activateMoveButton = ()=>{
 }
 
 const deactivateMoveButton = ()=>{
-  movingOverlay.remove();
+  if (movingOverlay) {
+    movingOverlay.remove();
+  }
 }
 
 templates.playbill = (position)=>`
   <a-entity
     position="${position.join(' ')}"
     wiggles="rate: 30; scale: 0.03"
-    look-at="#camera"
+    look-at="#focal-point"
     group-opacity="0"
     when-looked-at="
       focusX: 2; 
@@ -97,8 +99,8 @@ templates.playbill = (position)=>`
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(3), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
-      'SETTINGS',
-      null,
+      'BEGIN',
+      'plays="media/prodigy-2.mp4"',
       false)}
   </a-entity>
 `;

@@ -20,7 +20,7 @@ templates.takePhoto = (position)=>`
       [1.5, 0.5, 0],
       'CANCEL',
       'closes-photo',
-      true
+      false
     )}
   </a-entity>
 `;

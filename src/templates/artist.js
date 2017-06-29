@@ -13,7 +13,7 @@ templates.artist = (position)=>`
   <a-entity
     position="${position.join(' ')}"
     wiggles="rate: 30; scale: 0.03"
-    look-at="#camera"
+    look-at="#focal-point"
     group-opacity="0"
     when-looked-at="
       focusX: 0.3;

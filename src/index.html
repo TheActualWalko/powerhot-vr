@@ -31,6 +31,7 @@
     <script src="/components/moves-to.js"></script>
     <script src="/components/hover-reaction.js"></script>
     <script src="/components/shows-move-options.js"></script>
+    <script src="/components/logo-animate.js"></script>
 
     <script src="/values/values-store.js"></script>
     <script src="/values/fonts.js"></script>
@@ -47,6 +48,7 @@
     <script src="/templates/videosphere.js"></script>
     <script src="/templates/take-photo.js"></script>
     <script src="/templates/save-photo.js"></script>
+    <script src="/templates/iheart-logo.js"></script>
     
     <script src="/main.js"></script>
     <link rel="stylesheet" href="styles/style.css" />
@@ -75,6 +77,35 @@
         </div>
         <div id="social" class="social" style="width:480px; height:700px; background-color:#222;">
           <ul id="posts">
+            <li class="post">
+              <div class="profile" style="background-image:url('assets/twitter1.jpg');"></div>
+              <div class="icon" style="background-image:url('icons/twitter.png');"></div>
+              <main>
+                <h3>TovarEva</h3><time>16</time>
+                <p>RT @Primavera_Sound: Save the date! Tickets for Primavera Sound 2018 will go on sale on 4th July! 
+  Stay tuned for more details! https://t.c…</p>
+              </main>
+            </li>
+          
+            <li class="post">
+              <div class="profile" style="background-image:url('assets/twitter2.jpg');"></div>
+              <div class="icon" style="background-image:url('icons/twitter.png');"></div>
+              <main>
+                <h3>uwelibglen</h3><time>14</time>
+                <p>The guy dressed as a rabbit's extraordinary story to tell about stroke survival and rehabilitation https://t.co/VsYZf4PiPE #PrimaveraSound</p>
+              </main>
+            </li>
+          
+            <li class="post">
+              <div class="profile" style="background-image:url('assets/twitter3.jpg');"></div>
+              <div class="icon" style="background-image:url('icons/twitter.png');"></div>
+              <main>
+                <h3>pulguitil</h3><time>12</time>
+                <p>RT @Primavera_Sound: Perfume Genius pasarán en noviembre por Barcelona y Madrid:
+  Entradas a la venta a partir de mañana.
+  +INFO: https://t.c…</p>
+              </main>
+            </li>
           </ul>
         </div>
         <div id="artist" class="artist hidden" style="width:480px; height:700px;background-color: #222;">
@@ -83,7 +114,8 @@
     </div>
     <a-scene id='armsRace'>
       <a-assets>
-        <video id="video" src="media/test-video.mp4" muted></video>
+        <video id="video" src="media/prodigy-2.mp4"></video>
+        <img id="logo" src="assets/logo.png" />
         <img id="camera-image" src="icons/camera.png" />
         <img id="save-station" src="icons/save-station.png" />
         <img id="save" src="icons/save.png" />
