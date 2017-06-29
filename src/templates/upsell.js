@@ -1,4 +1,4 @@
-templates.upsell = (position=[0, 2, -3], scale=[3,0.75,0.2]) => {
+templates.upsell = (position=[0, 3, -3], scale=[3,3,1]) => {
   const [x, y, z] = position
   const onCancel = () => {
     upsellIsOpen = false;
@@ -11,23 +11,23 @@ templates.upsell = (position=[0, 2, -3], scale=[3,0.75,0.2]) => {
   }
   return `
     <a-entity
-      position="${position.join(' ')}"
+      position="0 0 0"
       wiggles="rate: 30; scale: 0.03"
-      look-at="#focal-point"
       group-opacity="1"
       id="upsell">
       ${templates.modal(
-        [0,0,0],
+        position,
         scale,
         {
-          promptText: 'This feature is for All Access users only',
+          promptImage: '#upsell-img',
           confirmText: 'Sign Up',
           cancelText: 'Cancel',
         },
         {
           onConfirm: null,
           onCancel: 'closes-upsell',
-        }
+        },
+        true
       )}
       </a-entity>
   `
