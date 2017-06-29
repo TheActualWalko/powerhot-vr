@@ -3,7 +3,7 @@ templates.videosphere = ()=>`
     id="videosphere"
     src="#video"
     rotation="0 265 0"
-    segments-height="16"
-    segments-width="16">
+    segments-height="64"
+    segments-width="64">
   </a-videosphere>
 `;

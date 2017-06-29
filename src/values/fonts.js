@@ -1,1 +1,1 @@
-values.font = 'Exo2SemiBold.fnt';
+values.font = 'Exo2Bold.fnt';

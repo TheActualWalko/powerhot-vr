@@ -5,7 +5,8 @@ if (typeof AFRAME === 'undefined') {
 }
 
 let lookedAtHTMLtimeout;
-const transitionStepLimit = 5;
+let whenLookedAts = 0;
+const transitionStepLimit = 15;
 
 AFRAME.registerComponent('when-looked-at', {
   schema: {
@@ -17,18 +18,6 @@ AFRAME.registerComponent('when-looked-at', {
       default: 0.5, 
       type: 'number' 
     },
-    dur: {
-      type: 'number'
-    },
-    property: {
-      type: 'string'
-    },
-    in: { 
-      type: 'number' 
-    },
-    out: { 
-      type: 'number' 
-    },
     usesDomNode: {
       type: 'string'
     }
@@ -37,14 +26,16 @@ AFRAME.registerComponent('when-looked-at', {
   multiple: false,
 
   init: function() {
+    this.whenLookedAtIndex = 4 * (whenLookedAts ++);
     const camera = document.querySelector('#camera');
     const frustum = new THREE.Frustum();
-    this.el.setAttribute(this.data.property, this.data.out);
+    this.el.setAttribute('group-opacity', 0);
     this.initialPos = Number(this.el.getAttribute('position').z);
-    this.initialScale = Number(this.el.getAttribute('scale').y);
+    this.initialScale = Number(this.el.getAttribute('scale').x);
     this.camera = camera;
     this.frustum = frustum;
     this.wasInView = null;
+    this.tickIndex = 0;
   },
 
   remove: function() {
@@ -52,78 +43,89 @@ AFRAME.registerComponent('when-looked-at', {
   },
 
   tick: function() {
-    const cameraThreeJS = this.camera.components.camera.camera;
+    this.tickIndex ++;
+    if (this.tickIndex % 15 === this.whenLookedAtIndex) {
+      const cameraThreeJS = this.camera.components.camera.camera;
 
-    // This is required by Chrome for Android in VR mode.
-    cameraThreeJS.updateMatrix();
-    cameraThreeJS.updateMatrixWorld();
-    cameraThreeJS.matrixWorldInverse.getInverse(cameraThreeJS.matrixWorld);
-    const fX = 1/this.data.focusX;
-    const fY = 1/this.data.focusY;
+      // This is required by Chrome for Android in VR mode.
+      cameraThreeJS.updateMatrix();
+      cameraThreeJS.updateMatrixWorld();
+      cameraThreeJS.matrixWorldInverse.getInverse(cameraThreeJS.matrixWorld);
+      const fX = 1/this.data.focusX;
+      const fY = 1/this.data.focusY;
 
-    const smallerProjectionMatrix = new THREE.Matrix4().multiplyMatrices(
-      cameraThreeJS.projectionMatrix,
-      new THREE.Matrix4().set(
-        fX,0, 0, 0,
-        0, fY,0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1,
-      )
-    );
-
-    this.frustum.setFromMatrix(
-      new THREE.Matrix4()
-        .multiplyMatrices(
-          smallerProjectionMatrix,
-          cameraThreeJS.matrixWorldInverse
+      const smallerProjectionMatrix = new THREE.Matrix4().multiplyMatrices(
+        cameraThreeJS.projectionMatrix,
+        new THREE.Matrix4().set(
+          fX,0, 0, 0,
+          0, fY,0, 0,
+          0, 0, 1, 0,
+          0, 0, 0, 1,
         )
-    );
+      );
 
-    const pos = this.el.getAttribute('position');
-    let isInView = this.frustum.containsPoint(new THREE.Vector3(
-      pos.x,
-      pos.y,
-      pos.z
-    ));
+      this.frustum.setFromMatrix(
+        new THREE.Matrix4()
+          .multiplyMatrices(
+            smallerProjectionMatrix,
+            cameraThreeJS.matrixWorldInverse
+          )
+      );
 
-    if (window.activeSpeech && window.activeSpeech.state === 'listening') {
-      isInView = false;
-    }
+      const pos = this.el.getAttribute('position');
+      let isInView = this.frustum.containsPoint(new THREE.Vector3(
+        pos.x,
+        pos.y,
+        pos.z
+      ));
 
-    if (isInView && this.wasInView !== true) {
-      if (this.data.usesDomNode) {
-        setTimeout(()=>{
+      if (window.activeSpeech && window.activeSpeech.state === 'listening') {
+        isInView = false;
+      }
+
+      if (isInView && this.wasInView !== true) {
+        if (this.data.usesDomNode) {
+          setTimeout(()=>{
+            document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
+            document.querySelector(this.data.usesDomNode).classList.remove('hidden');
+            $(this.el)
+              .find('.uses-html')
+              .each(function(){
+                this.setAttribute('material', 'fps', 5);
+              });
+          }, 0);
+        }
+        this.el.setAttribute('group-opacity', 1);
+        this.el.emit('__look-changed');
+        this.wasInView = true;
+        this.transitionInStep = 0;
+        this.transitionOutStep = transitionStepLimit;
+      } else if (!isInView && this.wasInView !== false){
+        this.transitionInStep = 0;
+        this.transitionOutStep = transitionStepLimit;
+        if (this.data.usesDomNode) {
           document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
-          document.querySelector(this.data.usesDomNode).classList.remove('hidden');
           $(this.el)
             .find('.uses-html')
             .each(function(){
-              this.setAttribute('material', 'fps', 5);
+              this.setAttribute('material', 'fps', 0);
             });
-        }, 0);
+        }
+        this.wasInView = false;
       }
-      this.el.setAttribute(this.data.property, this.data.in);
-      this.el.emit('__look-changed');
-      this.wasInView = true;
-      this.transitionStep = 0;
-    } else if (!isInView && this.wasInView !== false){
-      this.transitionStep = transitionStepLimit;
-      if (this.data.usesDomNode) {
-        document.querySelectorAll('#all-html>*').forEach( node => node.classList.add('hidden') );
-        $(this.el)
-          .find('.uses-html')
-          .each(function(){
-            this.setAttribute('material', 'fps', 0);
-          });
-      }
-      this.el.setAttribute(this.data.property, this.data.out);
-      this.el.emit('__look-changed');
-      this.wasInView = false;
     }
-    if (this.transitionStep <= transitionStepLimit) {
-      //this.el.setAttribute('position', 'z', this.initialPos - (0.5 * (this.transitionStep/transitionStepLimit)));
-      this.el.setAttribute('scale', 'y', this.initialScale * ((5+this.transitionStep)/(5+transitionStepLimit)));
-      this.transitionStep ++;
+    if (this.wasInView && this.transitionInStep <= transitionStepLimit) {
+      this.el.setAttribute('scale', 'y', this.initialScale * Math.min((5+this.transitionInStep)/(5+(transitionStepLimit/2)), 1));
+      [...this.el.children].forEach((x,i)=>{
+        x.setAttribute('rotation', 'y', (1-(this.transitionInStep/transitionStepLimit)) * ((i+1) * 8));
+      });
+      this.transitionInStep ++;
+    } else if (!this.wasInView && this.transitionOutStep > 0) {
+      this.el.setAttribute('scale', 'y', this.initialScale * Math.min((this.transitionOutStep)/((transitionStepLimit/2)), 1));
+      this.transitionOutStep --;
+    } else if (!this.wasInView && this.transitionOutStep === 0) {
+      this.el.setAttribute('group-opacity', 0);
+      this.el.emit('__look-changed');
     }
   },
 });
