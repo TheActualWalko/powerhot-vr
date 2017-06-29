@@ -26,22 +26,19 @@ templates.camera = ()=>`
       </a-animation>
       <a-animation
         begin="mouseenter"
-        dur="250"
-        easing="ease-in"
+        dur="1"
         attribute="material.opacity"
-        to="0.75">
+        to="1">
       </a-animation>
       <a-animation
         begin="mouseleave"
-        dur="250"
-        easing="ease-out"
+        dur="1"
         attribute="material.opacity"
         to="0">
       </a-animation>
       <a-animation
         begin="click"
-        dur="250"
-        easing="ease-out"
+        dur="1"
         attribute="material.opacity"
         to="0">
       </a-animation>
