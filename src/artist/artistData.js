@@ -14,19 +14,32 @@ const artists = {
     isNowPerforming: true,
     begin: '2017',
     end: 'THE END OF TIME',
+  },
+  TheProdigy: {
+    image: '../assets/TheProdigy(c)2009MickRock.jpg',
+    name: 'THE PRODIGY',
+    song: 'Firestarter',
+    isNowPerforming: true,
+    begin: '8:00pm',
+    end: '9:00pm',
   }
 };
 
 
 function setArtistData (artistObject) {
-  console.log({artistObject})
   window.artistData = artistObject;
 }
 
 function setArtistDataFromQS () {
-  artistKey = window.location.search.split('=')[1] || 'BrunoMars';
-  console.log({artistKey})
-  setArtistData(artists[artistKey]);
+  const params = window.location.search.slice(1).split('&').reduce((paramObj, queryComponent) => {
+    [key, value] = queryComponent.split('=');
+    paramObj[key] = value;
+    return paramObj;
+  });
+
+  const artistName = params['key'];
+
+  setArtistData(artists[artistName] || artists.Samiami);
 }
 
 setArtistDataFromQS();
