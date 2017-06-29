@@ -22,6 +22,12 @@ templates.social = (position)=>`
         height: 700;
       ">
     </a-plane>
+    <a-plane
+      color="${values.panelEchoBackground}"
+      position="0 0.5 -0.1"
+      scale="2.5 3.6 1.1"
+      material="shader: flat">
+    </a-plane>
     ${templates.imageButton(
       [0, -1.55, 0], 
       [2.4, 0.5, 1],
