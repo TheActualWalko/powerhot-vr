@@ -1,4 +1,4 @@
-templates.upsell = (position=[0, 2, -3], scale=[5,0.75,0.2]) => {
+templates.upsell = (position=[0, 2, -3], scale=[3,0.75,0.2]) => {
   const [x, y, z] = position
   const onCancel = () => {
     upsellIsOpen = false;
@@ -20,12 +20,12 @@ templates.upsell = (position=[0, 2, -3], scale=[5,0.75,0.2]) => {
         [0,0,0],
         scale,
         {
-          promptText: 'YOU WILL SIGN UP FOR ALL ACCESS OR YOU WILL PERISH IN THE RAVENOUS, ALL-CONSUMING FIRES OF HELL.  YOU HAVE BEEN WARNED.',
-          confirmText: 'FREEDOM',
-          cancelText: 'PAIN',
+          promptText: 'This feature is for All Access users only',
+          confirmText: 'Sign Up',
+          cancelText: 'Cancel',
         },
         {
-          onConfirm: 'closes-upsell',
+          onConfirm: null,
           onCancel: 'closes-upsell',
         }
       )}

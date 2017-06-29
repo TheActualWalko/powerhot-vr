@@ -48,7 +48,7 @@ templates.artist = (position)=>`
       [buttonLeft + buttonDelta, buttonTop, 0],
       [buttonWidth, buttonWidth, buttonWidth],
       '#save',
-      () => {})}
+      () => scene.prepend(templates.upsell()))}
     ${templates.imageButton(
       [buttonLeft + 2 * buttonDelta, buttonTop, 0],
       [buttonWidth, buttonWidth, buttonWidth],
