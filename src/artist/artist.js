@@ -1,5 +1,5 @@
-const containerWidth = '396px'
-const imageHeight = '250px' //1/3 of container width
+const containerWidth = '476px'
+const imageHeight = '300px' //1/3 of container width
 const paddingAdjustment= '-0.4px'
 
 const imageContainer = `width:${containerWidth};height:${imageHeight};position:absolute;left:${paddingAdjustment};top:${paddingAdjustment};`
