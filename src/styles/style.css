@@ -1,0 +1,81 @@
+body{
+  background: black;
+}
+
+*{
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+.social, .artist {
+  color: #fff; 
+  padding: 20px;
+  position: absolute;
+  background-color: black;
+  top:0;
+  left:0;
+}
+
+.hidden {
+  display: none;
+}
+
+.social {
+  padding: 0 20px;
+}
+
+.social .post {
+  position: relative;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.social .post .profile {
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.social .post .icon {
+  position: absolute;
+  left: 50px;
+  top: 60px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: -2px -2px;
+  border: 2px solid white;
+}
+
+.social .post .image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.social .post main {
+  padding-left: 100px;
+  padding-top: 27px;
+  min-height: 110px;
+}
+
+.social .post h3 {
+  margin: 0 0 5px 0; 
+  padding: 0;
+}
+
+.social .post p {
+  margin: 0;
+  padding: 0;
+}
