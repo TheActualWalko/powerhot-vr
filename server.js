@@ -41,7 +41,7 @@ auth.init().then(tokens => {
 
 
         res.send(JSON.stringify(data));
-      });
+      })
     })
     .listen(8080);
 });

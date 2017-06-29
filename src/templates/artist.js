@@ -1,12 +1,10 @@
 templates.artist = (position)=>`
   <a-entity
     position="${position.join(' ')}"
+    wiggles="rate: 30; scale: 0.03"
     look-at="#camera"
     group-opacity="0"
     when-looked-at="
-      property: group-opacity;
-      in: 1;
-      out: 0;
       focusX: 0.3; 
       focusY: 0.8; 
       usesDomNode: #artist;
