@@ -47,7 +47,7 @@ font-size:28px;
 const h3Style = `
 text-align:center;
 width:${containerWidth};
-color:#777;
+color:#ccc;
 font-weight:300;
 height:16px;
 font-size:24px;
@@ -56,7 +56,7 @@ const ruleStyle = `
 display:inline-block;
 text-align:center;
 width:350px;
-color:#777;
+color:#ccc;
 height: 1px;
 margin-bottom:0;
 `
@@ -75,7 +75,8 @@ function setArtistProfile({
     end,
     isNowPerforming,
   }) {
-  const artistBox = $('#artist')
+  const artistBox = $('#artist');
+  //$("#artist-html")[0].flushToDom();
   artistBox.html(`
     <div style=${imageContainer}>
       <img src="${image}" style="${imageStyle}" />

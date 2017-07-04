@@ -4,9 +4,18 @@ $(()=>{
   $("#video")[0].pause();
 
 
-  scene.prepend(templates.artist([-4, 1.6, -3]));
-  scene.prepend(templates.social([4, 1.6, -3]));
-  scene.prepend(templates.playbill([0, -1, -3]));
+  scene.prepend(templates.artist(
+    [-8, 2.6, -4],
+    [2,2,2]
+  ));
+  scene.prepend(templates.social(
+    [8, 2.6, -4],
+    [2,2,2]
+  ));
+  scene.prepend(templates.playbill(
+    [0, -1.5, -2.5],
+    [1,1,1]
+  ));
 
   scene.append(templates.videosphere());
   scene.append(templates.camera());

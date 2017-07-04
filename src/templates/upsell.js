@@ -20,7 +20,7 @@ templates.upsell = (position=[0, 3, -3], scale=[3,3,1]) => {
         scale,
         {
           promptImage: '#upsell-img',
-          confirmText: 'Sign Up',
+          confirmText: 'Upgrade',
           cancelText: 'Cancel',
         },
         {

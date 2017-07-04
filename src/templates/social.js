@@ -1,8 +1,9 @@
-templates.social = (position)=>`
+templates.social = (position, scale)=>`
   <a-entity
     id="social-panel"
     position="${position.join(' ')}"
-    wiggles="rate: 30; scale: 0.03"
+    scale="${scale.join(' ')}"
+    wiggles="rate: 30; scale: 0.06"
     look-at="#focal-point"
     group-opacity="0"
     when-looked-at="

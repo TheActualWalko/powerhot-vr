@@ -1,11 +1,11 @@
 let currentJpeg;
 
-function screenToJpegBlob (sceneId, use360, quality=0.92) { //args: string, bool, number: 0 < x <= 1
+function screenToJpegBlob (sceneId, use360, quality=1) { //args: string, bool, number: 0 < x <= 1
   return new Promise(function (resolve) {
     const screenshot = document.querySelector(`#${sceneId}`).components.screenshot;
     const {camera, size, projection} = screenshot.setCapture(use360 ? 'equirectangular' : 'perspective');
     screenshot.renderCapture(camera, size, projection);
-    screenshot.canvas.toBlob(resolve, 'image/jpeg', quality);
+    screenshot.canvas.toBlob(resolve, 'image/bmp', quality);
   });
 }
 
@@ -44,10 +44,10 @@ function saveJpegBlob (jpeg) {
 }
 
 function getJpegAndRender () {
-  return screenToJpegBlob('armsRace', true).then(renderJpegToImage);
+  return screenToJpegBlob('armsRace', true ).then(renderJpegToImage);
 }
 
-function getJpegAndSave (message, use360=true) {
+function getJpegAndSave (message, use360=true  ) {
   screenToJpegBlob('armsRace', use360).then(saveJpegBlob);
 }
 

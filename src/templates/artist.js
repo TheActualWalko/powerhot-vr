@@ -9,10 +9,11 @@ const lowerButtonLeft = buttonLeft + lowerButtonWidth * 9/32 //I have no idea wh
 const lowerButtonTop = buttonTop - buttonDelta;
 const lowerButtonDelta = buttonDistance + lowerButtonWidth;
 
-templates.artist = (position)=>`
+templates.artist = (position, scale)=>`
   <a-entity
     position="${position.join(' ')}"
-    wiggles="rate: 30; scale: 0.03"
+    scale="${scale.join(' ')}"
+    wiggles="rate: 30; scale: 0.06"
     look-at="#focal-point"
     group-opacity="0"
     when-looked-at="
@@ -21,6 +22,7 @@ templates.artist = (position)=>`
       usesDomNode: #artist;
     ">
     <a-plane
+      id="artist-html"
       class="uses-html"
       position="0 0.75 0"
       scale="2.4 3.5 1"

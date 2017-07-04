@@ -36,9 +36,10 @@ const deactivateMoveButton = ()=>{
   }
 }
 
-templates.playbill = (position)=>`
+templates.playbill = (position, scale)=>`
   <a-entity
     position="${position.join(' ')}"
+    scale="${scale.join(' ')}"
     wiggles="rate: 30; scale: 0.03"
     look-at="#focal-point"
     group-opacity="0"
@@ -82,7 +83,7 @@ templates.playbill = (position)=>`
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(0), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'ITINERARY',
-      null,
+      'plays="media/test-video.mp4"',
       true)}
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(1), 0],

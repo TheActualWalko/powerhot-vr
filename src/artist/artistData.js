@@ -41,4 +41,9 @@ function setArtistDataFromQS () {
   setArtistData(artists[artistName] || artists.TheProdigy);
 }
 
+
+window.samArtistData = artists.Samiami;
+window.prodigyArtistData = artists.TheProdigy;
+
+
 setArtistDataFromQS();

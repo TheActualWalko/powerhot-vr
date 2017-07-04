@@ -10,15 +10,18 @@ AFRAME.registerComponent('plays', {
       let time = 0;
       video.pause();
       video.currentTime = 0;
-      if (lastSrc === this.data) {
+      if (lastSrc === this.data || lastSrc === 'media/test-video.mp4') {
+        if (this.data.toLowerCase().includes('prodigy')) {
+          window.setArtistProfile(window.prodigyArtistData);
+        }
         $('.move-option').each(function(){
           $(this).remove();
         });
-        setTimeout(()=>{
+        //setTimeout(()=>{
           scene.prepend(templates.iheartLogo([0, 1.55, -1]));
           video.setAttribute('src', this.data);
           video.play();
-        }, 3000);
+        //}, 3000);
       } else {
         const zoomInterval = setInterval(()=>{
           time ++;

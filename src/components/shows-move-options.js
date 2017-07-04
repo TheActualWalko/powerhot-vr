@@ -5,7 +5,7 @@ AFRAME.registerComponent('shows-move-options', {
       const moveIcons = MOVE_LOCATIONS
         .filter(x=>!x.active)
         .map(x=>{
-          const coords = [x.coords[0], x.coords[1] + 1.8, x.coords[2]];
+          const coords = [x.coords[0], x.coords[1] + 2.8, x.coords[2]];
           return $(`
             <a-sprite
               class="clickable move-option"
