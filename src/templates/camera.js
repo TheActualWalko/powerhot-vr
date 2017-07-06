@@ -6,7 +6,7 @@ templates.camera = ()=>`
       position="0 0 -2"
       scale="0.01 0.01 0.01"
       geometry="primitive: box;"
-      material="color: #133746;"
+      material="color: #336786;"
     >
     </a-entity>
     <a-entity

@@ -10,10 +10,10 @@ const artists = {
   samiami: {
     image: 'assets/Sam.png',
     name: 'SAM WATKINSON',
-    song: 'Help I\'m Locked In A Computer',
+    song: 'Rosemary by Frank Bridge',
     isNowPerforming: true,
-    begin: '2017',
-    end: 'THE END OF TIME',
+    begin: '1:00pm',
+    end: '1:05pm',
   },
   theprodigy: {
     image: 'assets/TheProdigy2.png',
