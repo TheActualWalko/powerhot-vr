@@ -1,6 +1,14 @@
 templates.camera = ()=>`
   <a-camera id="camera" fov="90">
     <a-entity id="focal-point" position="0 -0.3 2"></a-entity>
+    <a-entity 
+      id="dot"
+      position="0 0 -2"
+      scale="0.01 0.01 0.01"
+      geometry="primitive: box;"
+      material="color: #133746;"
+    >
+    </a-entity>
     <a-entity
       cursor="fuse: true; fuseTimeout: 750"
       raycaster="objects: .clickable"
