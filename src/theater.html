@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>♫ Presentation [iHeart VCX]</title>
+    <meta name="description" content="">
+    <script src="/aframe/dist/aframe-master.js"></script>
+    <script src="/aframe-lerp-component/dist/aframe-lerp-component.js"></script>
+    <script src="/aframe-look-at-component/dist/aframe-look-at-component.js"></script>
+    <script src="..//aframe-animation-component/dist/aframe-animation-component.js"></script>
+    <script src="/aframe-html-shader/dist/aframe-html-shader.js"></script>
+    <script src="/aframe-sprite-component/dist/aframe-sprite-component.js"></script>
+    <script src="./axios.js"></script>
+    <script src="./jquery.js"></script>
+
+    <script src="/values/values-store.js"></script>
+    <script src="/values/fonts.js"></script>
+    <script src="/values/theater.js"></script>
+    <script src="/values/colors.js"></script>
+
+    <script src="/move-data-theater.js"></script>
+    <script src="/artist/artistData.js"></script>
+    <script src="/artist/artist.js"></script>
+
+    <script src="/social.js"></script>
+    <script src="/speech.js"></script>
+    <script src="/shoot-the-screen.js"></script>
+
+    <script src="/components/wiggles.js"></script>
+    <script src="/components/group-opacity.js"></script>
+    <script src="/components/when-looked-at.js"></script>
+    <script src="/components/plays.js"></script>
+    <script src="/components/camera-click.js"></script>
+    <script src="/components/saves-photo.js"></script>
+    <script src="/components/closes-photo.js"></script>
+    <script src="/components/moves-to.js"></script>
+    <script src="/components/hover-reaction.js"></script>
+    <script src="/components/shows-move-options.js"></script>
+    <script src="/components/logo-animate.js"></script>
+    <script src="/components/closes-upsell.js"></script>
+
+    <script src="/templates/template-store.js"></script>
+    <script src="/templates/panel.js"></script>
+    <script src="/templates/text-button.js"></script>
+    <script src="/templates/image-button.js"></script>
+    <script src="/templates/artist.js"></script>
+    <script src="/templates/social.js"></script>
+    <script src="/templates/camera.js"></script>
+    <script src="/templates/playbill-theater.js"></script>
+    <script src="/templates/videosphere.js"></script>
+    <script src="/templates/take-photo.js"></script>
+    <script src="/templates/save-photo.js"></script>
+    <script src="/templates/iheart-logo.js"></script>
+
+    <script src="/templates/modal.js"></script>
+    <script src="/templates/upsell.js"></script>
+
+    <script src="/main.js"></script>
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+  <body>
+    <div style="width:100%; height:100%; position:fixed; left: 0; top: 0; z-index: -1; overflow: hidden;">
+      <div id="all-html">
+        <div id="itinerary" class="itinerary hidden" style="width:480px; height:460px; background-color:#222;">
+          <ul id="performances">
+            <li class="performance">
+              <div class="profile" style="background-image:url('assets/Noisia.jpeg');"></div>
+              <main>
+                <h3>Noisia - <span class="up-next">UP NEXT</span></h3>
+                <p>9:00pm - 10:00pm</p>
+              </main>
+            </li>
+
+            <li class="performance">
+              <div class="profile" style="background-image:url('assets/TheChemicalBrothers.jpeg');"></div>
+              <main>
+                <h3>The Chemical Brothers</h3>
+                <p>10:00pm - 11:00pm</p>
+              </main>
+            </li>
+
+            <li class="performance">
+              <div class="profile" style="background-image:url('assets/FatboySlim.jpg');"></div>
+              <main>
+                <h3>Fatboy Slim</h3>
+                <p>11:00pm - Midnight</p>
+              </main>
+            </li>
+          </ul>
+        </div>
+        <div id="social" class="social" style="width:480px; height:700px; background-color:#222;">
+          <ul id="posts">
+            <li class="post">
+              <div class="profile" style="background-image:url('assets/twitter1.jpg');"></div>
+              <div class="icon" style="background-image:url('icons/twitter.png');"></div>
+              <main>
+                <h3>TovarEva</h3><time>16 minutes ago</time>
+                <p>RT @Primavera_Sound: Save the date! Tickets for Primavera Sound 2018 will go on sale on 4th July!
+  Stay tuned for more details!</p>
+              </main>
+            </li>
+
+            <li class="post">
+              <div class="profile" style="background-image:url('assets/twitter2.jpg');"></div>
+              <div class="icon" style="background-image:url('icons/twitter.png');"></div>
+              <main>
+                <h3>uwelibglen</h3><time>14 minutes ago</time>
+                <p>The guy dressed as a rabbit's extraordinary story to tell about stroke survival and rehabilitation #PrimaveraSound</p>
+              </main>
+            </li>
+
+            <li class="post">
+              <div class="profile" style="background-image:url('assets/twitter3.jpg');"></div>
+              <div class="icon" style="background-image:url('icons/twitter.png');"></div>
+              <main>
+                <h3>pulguitil</h3><time>12 minutes ago</time>
+                <p>RT @Primavera_Sound: Perfume Genius pasarán en noviembre por Barcelona y Madrid:
+  Entradas a la venta a partir de mañana.</p>
+              </main>
+            </li>
+
+            <li class="post">
+              <div class="profile" style="background-image:url('assets/twitter4.jpg');"></div>
+              <div class="icon" style="background-image:url('icons/twitter.png');"></div>
+              <main>
+                <h3>uwelibglen</h3><time>14 minutes ago</time>
+                <p>The guy dressed as a rabbit's extraordinary story to tell about stroke survival and rehabilitation #PrimaveraSound</p>
+              </main>
+            </li>
+          </ul>
+        </div>
+        <div id="artist" class="artist hidden" style="width:480px; height:700px;background-color: #222;">
+        </div>
+      </div>
+    </div>
+    <a-scene id='armsRace'>
+      <a-assets>
+        <video id="video" src="media/first-part.mp4"></video>
+        <img id="upsell-img" src="assets/AAUpsellLol.png" />
+        <img id="logo" src="assets/Logo2.png" />
+        <img id="logo-glow" src="assets/Logo2glow.png" />
+        <img id="camera-image" src="icons/camera.png" />
+        <img id="save-station" src="icons/save-station.png" />
+        <img id="save" src="icons/save.png" />
+        <img id="thumbs-up" src="icons/thumbs-up.png" />
+        <img id="thumbs-down" src="icons/thumbs-down.png" />
+      </a-assets>
+    </a-scene>
+  </body>
+</html>

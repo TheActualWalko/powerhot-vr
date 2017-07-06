@@ -66,13 +66,14 @@ templates.artist = (position, scale)=>`
       [lowerButtonLeft, lowerButtonTop, 0],
       [lowerButtonWidth , buttonWidth, buttonWidth],
       'SET INFO',
-      null)}
+      null,
+      true)}
     ${templates.textButton(
       [lowerButtonLeft + lowerButtonDelta, lowerButtonTop, 0],
       [lowerButtonWidth , buttonWidth, buttonWidth],
       'ARTIST BIO',
-      null,
-      true)}
+      null
+      )}
   </a-entity>
 `;
 

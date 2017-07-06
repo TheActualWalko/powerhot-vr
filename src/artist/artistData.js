@@ -1,5 +1,5 @@
 const artists = {
-  BrunoMars: {
+  brunomars: {
     image: 'assets/BrunoMars.jpg',
     name: 'BRUNO MARS',
     song: 'Just The Way You Are',
@@ -7,7 +7,7 @@ const artists = {
     begin: '8:00pm',
     end: '9:00pm',
   },
-  Samiami: {
+  samiami: {
     image: 'assets/Sam.png',
     name: 'SAM WATKINSON',
     song: 'Help I\'m Locked In A Computer',
@@ -15,7 +15,7 @@ const artists = {
     begin: '2017',
     end: 'THE END OF TIME',
   },
-  TheProdigy: {
+  theprodigy: {
     image: 'assets/TheProdigy2.png',
     name: 'THE PRODIGY',
     song: 'Firestarter',
@@ -31,19 +31,16 @@ function setArtistData (artistObject) {
 }
 
 function setArtistDataFromQS () {
-  const params = window.location.search.slice(1).split('&').reduce((paramObj, queryComponent) => {
-    [key, value] = queryComponent.split('=');
-    paramObj[key] = value;
-    return paramObj;
-  }, {});
-
-  const artistName = params['key'];
-  setArtistData(artists[artistName] || artists.TheProdigy);
+  if (values.location === 'barcelona') {
+    setArtistData(artists.theprodigy);
+  } else {
+    setArtistData(artists.samiami);
+  }
 }
 
 
-window.samArtistData = artists.Samiami;
-window.prodigyArtistData = artists.TheProdigy;
+window.samArtistData = artists.samiami;
+window.prodigyArtistData = artists.theprodigy;
 
 
 setArtistDataFromQS();

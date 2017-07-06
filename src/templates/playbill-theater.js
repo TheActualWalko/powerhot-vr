@@ -83,7 +83,7 @@ templates.playbill = (position, scale)=>`
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(0), 0],
       [PLAYBILL_STYLES.buttonWidth, PLAYBILL_STYLES.buttonHeight, 1],
       'BEGIN',
-      'plays="media/prodigy-2.mp4"',
+      'plays="media/first-part.mp4"',
       false)}
     ${templates.textButton(
       [PLAYBILL_STYLES.buttonX, getPlaybillButtonY(1), 0],

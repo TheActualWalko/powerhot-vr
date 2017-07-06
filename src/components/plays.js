@@ -9,7 +9,6 @@ AFRAME.registerComponent('plays', {
       const lastSrc = video.getAttribute('src');
       let time = 0;
       video.pause();
-      video.currentTime = 0;
       if (lastSrc === this.data || lastSrc === 'media/test-video.mp4') {
         if (this.data.toLowerCase().includes('prodigy')) {
           window.setArtistProfile(window.prodigyArtistData);
@@ -18,7 +17,9 @@ AFRAME.registerComponent('plays', {
           $(this).remove();
         });
         //setTimeout(()=>{
-          scene.prepend(templates.iheartLogo([0, 1.55, -1]));
+          if (values.location === 'barcelona'){
+            scene.prepend(templates.iheartLogo([0, 1.55, -1]));
+          }
           video.setAttribute('src', this.data);
           video.play();
         //}, 3000);

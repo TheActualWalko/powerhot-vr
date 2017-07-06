@@ -1,6 +1,7 @@
 AFRAME.registerComponent('shows-move-options', {
   init: function () {
     this.el.addEventListener('click', ()=>{
+      $('.move-option').remove();
       activateMoveButton();
       const moveIcons = MOVE_LOCATIONS
         .filter(x=>!x.active)
