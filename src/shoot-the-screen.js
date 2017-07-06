@@ -4,7 +4,10 @@ function screenToJpegBlob (sceneId, use360, quality=1) { //args: string, bool, n
   return new Promise(function (resolve) {
     const screenshot = document.querySelector(`#${sceneId}`).components.screenshot;
     const {camera, size, projection} = screenshot.setCapture(use360 ? 'equirectangular' : 'perspective');
-    screenshot.renderCapture(camera, size, projection);
+    screenshot.renderCapture(camera, {
+      height: 256,
+      width: 512
+    }, projection);
     screenshot.canvas.toBlob(resolve, 'image/bmp', quality);
   });
 }
